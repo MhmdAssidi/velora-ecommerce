@@ -1,0 +1,26 @@
+button {
+  border-radius: 5px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  font-size: 16px;
+  & img{
+    height: 22px;
+    margin-right: 10px;
+  }
+  &.primary {
+    background-color: #000000;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  &.secondary {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #5B86E5;
+    font-weight: 400;
+    
+  }
+}
+.signup-button{
+    width: 400px;    
+}

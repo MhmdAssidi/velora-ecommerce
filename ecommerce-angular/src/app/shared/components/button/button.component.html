@@ -1,0 +1,9 @@
+<button
+  mat-raised-button
+  [color]="color"
+  [disabled]="disabled"
+  [type]="type"
+  [ngClass]="[appearance, customClass || '']"> 
+<img *ngIf="imgIcon" [src]="imgIcon" alt="icon">
+  {{ label }}
+</button>
