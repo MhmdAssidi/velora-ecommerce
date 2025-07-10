@@ -1,0 +1,92 @@
+
+<div class="container">
+<div class="imgContainer">
+  <img src="images/allan-lainez-n7hd4Lo3Lt8-unsplash.jpg" alt="Sign Up Banner" />
+</div>
+
+<div class="formContainer">
+
+  <div>
+<h1>Velora</h1>
+<h2>Create Account</h2>
+</div>
+
+<div class="form">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+  <div class="formBtns">
+  <app-button
+  label="Sign Up with Google"
+  appearance="secondary"
+    imgIcon="images/image 939.png"
+
+>
+</app-button>
+
+<app-button
+   label="Sign Up with Email"
+  appearance="secondary"
+    imgIcon="images/image 940.png">
+</app-button>
+</div>
+
+<div class="formInputs">
+<span class="or">- OR -</span>
+
+  <div class="formInputsEachRow">
+  <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="fullName" />
+  </mat-form-field>
+ <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="fullName" />
+  </mat-form-field>
+</div>
+
+<div class="formInputsEachRow">
+  <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Email address</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+
+   <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Phone number</mat-label>
+    <input matInput formControlName="fullName" />
+  </mat-form-field>
+</div>
+
+<div class="formInputsEachRow">
+  <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Create Password</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput type="password" formControlName="confirmPassword" />
+  </mat-form-field>
+  </div>
+</div>
+
+<div>
+ <app-button
+  label="Create Account"
+  appearance="primary"
+  type="submit"
+  customClass="signup-button">
+</app-button>
+</div>
+
+</form>
+<div style="margin-top: 10px;">
+  Already have an account? <span style="color: #5B86E5;">Login</span>
+</div>
+</div>
+
+
+<div>
+  <p>Velora Terms & Conditions</p>
+</div>
+</div>
+</div>
