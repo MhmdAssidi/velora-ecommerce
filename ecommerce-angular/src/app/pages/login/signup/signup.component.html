@@ -34,13 +34,19 @@
 <span class="or">- OR -</span>
 
   <div class="formInputsEachRow">
-  <mat-form-field appearance="outline" class="wide-field">
+  <mat-form-field appearance="outline" class="wide-field" floatLabel="always">
     <mat-label>First Name</mat-label>
-    <input matInput formControlName="fullName" />
+    <input matInput formControlName="firstName" />
+      <mat-error *ngIf="signupForm.get('firstName')?.hasError('required')" class="alert">
+    Please enter your first name
+  </mat-error>
   </mat-form-field>
  <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Last Name</mat-label>
-    <input matInput formControlName="fullName" />
+    <input matInput formControlName="lastName" />
+      <mat-error *ngIf="signupForm.get('lastName')?.hasError('required')" class="alert">
+    Please enter your last name
+  </mat-error>
   </mat-form-field>
 </div>
 
@@ -48,11 +54,17 @@
   <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Email address</mat-label>
     <input matInput formControlName="email" />
+    <mat-error *ngIf="signupForm.get('email')?.hasError('email')" class="alert">
+    Please enter a valid email address
+  </mat-error>
   </mat-form-field>
 
    <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Phone number</mat-label>
     <input matInput formControlName="fullName" />
+    <mat-error *ngIf="signupForm.get('phone')?.hasError('required')" class="alert">
+    Please enter a valid phone number
+  </mat-error>
   </mat-form-field>
 </div>
 
@@ -60,11 +72,20 @@
   <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Create Password</mat-label>
     <input matInput type="password" formControlName="password" />
+    <mat-error *ngIf="signupForm.get('password')?.hasError('required')" class="alert">
+                Password is required
+              </mat-error>
+              <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')" class="alert">
+              Password must be at least 8 characters
+              </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Confirm Password</mat-label>
     <input matInput type="password" formControlName="confirmPassword" />
+    <mat-error *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched" class="alert">
+    Passwords do not match
+  </mat-error>
   </mat-form-field>
   </div>
 </div>
