@@ -4,10 +4,12 @@
     align-items: start;
     gap:50px;
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
     border-radius: 15px;
   border: 2px solid #DBDBDB;
     box-shadow: 10px 10px 5px 12px DBDBDB;
+
+
 h1{
 color: #484848;
 font-weight: 400;
@@ -50,7 +52,7 @@ h2{
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    gap: 30px;
+        
         .formInputsEachRow{
             display: flex;
             width: 90%;
@@ -63,12 +65,30 @@ h2{
             opacity: 0.5;
             
         }  
+         .wide-field  {
+        width: 90%;         
+         }
         }
         
     }
+     .submitBtnCont{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+        .forgot{
+            display: flex;
+            justify-content: flex-end;
+           
+        }
+}
+       
 }
 }
-}
+
+
 @media (max-width: 1144px) {
     .container{
         flex-direction: column-reverse;
@@ -78,10 +98,15 @@ h2{
         
         .imgContainer{
             width: 100%;
+            
         }
         .formContainer{
             width: 100%;
-
+            .form{
+            .formBtns{
+        flex-direction: column;
+            }
+        
         .formInputs{
             .formInputsEachRow{
                 flex-direction: column;
@@ -93,20 +118,16 @@ h2{
                  }
               }
         }
+       
     }
     
-        .submitBtn{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-    
-    .formBtns{
-    flex-direction: column !important;
+        
+    }
+     .formBtns{
+    flex-direction: column;
+    justify-content: space-around;
     gap: 30px;
     }
    }
+   
 }
-    
-

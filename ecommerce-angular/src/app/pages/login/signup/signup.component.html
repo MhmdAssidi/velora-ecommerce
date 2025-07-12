@@ -12,7 +12,7 @@
 </div>
 
 <div class="form">
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="signupForm">
 
   <div class="formBtns">
   <app-button
@@ -61,7 +61,7 @@
 
    <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Phone number</mat-label>
-    <input matInput formControlName="phone" />
+    <input matInput formControlName="fullName" />
     <mat-error *ngIf="signupForm.get('phone')?.hasError('required')" class="alert">
     Please enter a valid phone number
   </mat-error>
@@ -90,8 +90,7 @@
   </div>
 </div>
 
-
-<div class="submitBtn">
+<div>
  <app-button
   label="Create Account"
   appearance="primary"
@@ -99,7 +98,6 @@
   customClass="signup-button">
 </app-button>
 </div>
-
 
 </form>
 <div style="margin-top: 10px;">
