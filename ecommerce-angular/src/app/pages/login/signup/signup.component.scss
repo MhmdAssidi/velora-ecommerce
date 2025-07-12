@@ -49,9 +49,7 @@ h2{
             display: flex;
             width: 90%;
             justify-content: space-around;
-         .wide-field {
-          width: 45%;
-          } 
+        
           .alert{
             color: red;
           }
@@ -65,3 +63,43 @@ h2{
 }
 }
 }
+@media (max-width: 1144px) {
+    .container{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+        
+        .imgContainer{
+            width: 100%;
+        }
+        .formContainer{
+            width: 100%;
+
+        .formInputs{
+            .formInputsEachRow{
+                flex-direction: column;
+                justify-content: center;
+                align-items: center; 
+                 .wide-field  {
+                  width: 90%;
+                  margin-top: 30px;
+                 }
+              }
+        }
+    }
+    
+        .submitBtn{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+    }
+   }
+    .formBtns{
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 30px;
+    }
+
