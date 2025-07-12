@@ -6,49 +6,39 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
 
-export function passwordMatchValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
 
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
-      return { passwordMismatch: true };
-    }
-    return null;
-  };
-}
 @Component({
-  selector: 'app-signup',
- imports: [
+  selector: 'app-login',
+  imports: [
     CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     ButtonComponent
-],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.scss'
+  ],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
-
-export class SignupComponent implements OnInit {
-  signupForm!: FormGroup;  //signupForm is the form.
+export class LoginComponent implements OnInit {
+ signInForm!: FormGroup;  //signinForm is the form.
 
   constructor(private fb: FormBuilder) {}
 
 ngOnInit(): void {
-  this.signupForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    phone: ['', Validators.required],
+  this.signInForm = this.fb.group({ 
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', Validators.required]
   },{
-        validators: passwordMatchValidator()
-
   });
 }
 
+onSubmit(): void {
+  if (this.signInForm.invalid) {
+    this.signInForm.markAllAsTouched();
+    return;
+  }
 
+  console.log(this.signInForm.value);
+}
 }
