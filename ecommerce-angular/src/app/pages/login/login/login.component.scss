@@ -77,7 +77,17 @@ h2{
             justify-content: center;
             align-items: center;
             gap: 20px;
+            width: 100%;
+        .submitBtn{
+            width: 100%;
         }
+::ng-deep button.register-now-button {
+  background-color: #ffffff !important;
+  color: #5B86E5 !important;
+  border: 2px solid #CCCCCC !important; 
+        }
+        }
+        
         .forgot{
             display: flex;
             justify-content: flex-end;
@@ -89,7 +99,7 @@ h2{
 }
 
 
-@media (max-width: 1144px) {
+@media (max-width: 1147px) {
     .container{
         flex-direction: column-reverse;
         justify-content: center;
