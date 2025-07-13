@@ -10,29 +10,38 @@ export class AuthenticationService {
   private tokenKey='access_token';
 
   constructor(private http: HttpClient) { }
+//we need to store the token returned from backend api
 
-setToken(token: string): void {  //for login
+setToken(token: string): void {  //saves the token returned by the backend into localStorage.used in login action
   localStorage.setItem(this.tokenKey, token);
 }
 
  
-  getToken(): string | null {  //for checking if loggedin or not
+  getToken(): string | null {  //Reads the token from localStorage 
     return localStorage.getItem(this.tokenKey);
   }
-  clearToken(): void { //for logout
+  clearToken(): void { //delete the token so used in logout action
     localStorage.removeItem(this.tokenKey);
   }
 
-  login(credentials: { email: string, password: string }): Observable<any> {
+  login(credentials: { email: string, password: string }): Observable<any> { 
+
+    //first send pass and email which are the credentails to the backend api using http
   return this.http.post<any>('http://192.168.1.187:5005/api/User/Login()', credentials).pipe(
-    tap(response => {
-      if (response && response.token) {
-        this.setToken(response.token);
+    tap(response => { //tap lets you “do something” after getting a response. response here is what we will get from api 
+      if (response && response.token) { //if response return a token
+        this.setToken(response.token); //store it in local storage
       }
     })
   );
 }
-signup(data: { name: string, email: string, password: string }): Observable<any> {
+signup(data: {
+  Firstname: string;
+  Lastname: string;
+  Email: string;
+  Password: string;
+  RoleName: string;
+}): Observable<any> {
   return this.http.post<any>('http://192.168.1.187:5005/api/User/Signup()', data).pipe(
     tap(response => {
       if (response && response.token) {
@@ -42,8 +51,9 @@ signup(data: { name: string, email: string, password: string }): Observable<any>
   );
 }
 
+
 isLoggedIn(): boolean {
-  return !!this.getToken();
+  return !!this.getToken();  //Returns true if there’s a token → user is logged in.
 }
 logout(): void {
     this.clearToken();
