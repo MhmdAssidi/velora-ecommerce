@@ -1,0 +1,48 @@
+
+<div class="container">
+<div class="imgContainer">
+  <img src="images/yiran-ding-AX_yrsyYOso-unsplash.jpg" alt="Sign Up Banner" />
+</div>
+
+<div class="formContainer">
+
+  <div>
+<h1>Velora</h1>
+<h2>Enter the Confirmation Code</h2>
+</div>
+
+<div class="form">
+<form [formGroup]="confrimForm" (ngSubmit)="onSubmit()">
+
+<div class="formInputs">
+<div class="formInputsEachRow">
+  <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Confirmation Code</mat-label>
+    <input matInput formControlName="confirmCode" />
+    <mat-error *ngIf="confrimForm.get('confirmCode')?.hasError('required')" class="alert">
+    Please enter the code received
+  </mat-error>
+  </mat-form-field>
+</div>
+
+</div>
+
+<div class="submitBtn">
+ <app-button
+  label="Recover Account"
+  appearance="primary"
+  type="submit"
+  customClass="signup-button">
+</app-button>
+</div>
+</form>
+<div style="margin-top: 20px;">
+ Didn't receive confirmation code?<a style="color: #5B86E5; font-weight: 600; cursor: pointer;"> Resend Now</a>
+</div>
+</div>
+
+<div>
+  <p>Velora Terms & Conditions</p>
+</div>
+</div>
+</div>
