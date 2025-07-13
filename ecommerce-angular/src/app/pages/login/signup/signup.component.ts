@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
+import { Router } from '@angular/router';
 
 export function passwordMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -34,7 +35,7 @@ export function passwordMatchValidator(): ValidatorFn {
 export class SignupComponent implements OnInit {
   signupForm!: FormGroup;  //signupForm is the form.
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private router: Router) {}
 
 ngOnInit(): void {
   this.signupForm = this.fb.group({
@@ -49,6 +50,8 @@ ngOnInit(): void {
 
   });
 }
-
+goToSignin() {
+  this.router.navigate(['/signin']);
+}
 
 }

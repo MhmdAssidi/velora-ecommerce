@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-forgot-password',
   imports: [
@@ -21,7 +22,7 @@ import { ButtonComponent } from "../../../shared/components/button/button.compon
 export class ForgotPasswordComponent  implements OnInit {
  forgotPasswordForm!: FormGroup;  //signinForm is the form.
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,private router: Router) {}
 
 ngOnInit(): void {
   this.forgotPasswordForm = this.fb.group({
@@ -40,5 +41,8 @@ onSubmit(): void {
   }
 
   console.log(this.forgotPasswordForm.value);
+}
+goToSignin() {
+  this.router.navigate(['/signin']);
 }
 }
