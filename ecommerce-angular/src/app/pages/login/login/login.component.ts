@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../../../core/auth/authentication.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
  signInForm!: FormGroup;  //signinForm is the form.
 
-  constructor(private fb: FormBuilder,private router: Router) {}
+  constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService) {}
 
 ngOnInit(): void {
   this.signInForm = this.fb.group({ 
@@ -34,14 +35,29 @@ ngOnInit(): void {
   });
 }
 
-onSubmit(): void {
+onSubmit() {
   if (this.signInForm.invalid) {
     this.signInForm.markAllAsTouched();
     return;
   }
 
-  console.log(this.signInForm.value);
+  const credentials = {
+    email: this.signInForm.value.email,
+    password: this.signInForm.value.password
+  };
+
+  this.authService.login(credentials).subscribe({
+    next: (response) => {
+      console.log('Login successful!', response);
+      this.router.navigate(['/home']); // navigate wherever you want after login
+    },
+    error: (error) => {
+      console.error('Login error', error);
+    }
+  });
 }
+
+
 goToForgotPass(){
   this.router.navigate(['/forgot-password']);
 }
