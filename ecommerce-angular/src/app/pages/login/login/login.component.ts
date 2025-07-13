@@ -24,6 +24,7 @@ import { AuthenticationService } from '../../../core/auth/authentication.service
 })
 export class LoginComponent implements OnInit {
  signInForm!: FormGroup;  //signinForm is the form.
+apiErrorMessage = '';
 
   constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService) {}
 
@@ -48,11 +49,12 @@ onSubmit() {
 
   this.authService.login(credentials).subscribe({
     next: (response) => {
-      console.log('Login successful!', response);
+      this.apiErrorMessage = '';
       this.router.navigate(['/home']); // navigate wherever you want after login
     },
     error: (error) => {
-      console.error('Login error', error);
+      this.apiErrorMessage = 'Invalid username or password';
+
     }
   });
 }

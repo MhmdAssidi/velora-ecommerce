@@ -73,6 +73,10 @@
 </app-button>
 </div>
 </div>
+<div *ngIf="apiErrorMessage" class="alert error">
+  {{ apiErrorMessage }}
+</div>
+
 </form>
 <div style="margin-top: 10px;color: #5B86E5; font-weight: 600; cursor: pointer;" class="forgot">
  <a (click)="goToForgotPass()">Forgot Password?</a>
