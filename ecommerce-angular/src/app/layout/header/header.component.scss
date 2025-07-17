@@ -1,0 +1,24 @@
+
+// font families
+$font-volkhov: 'Volkhov', serif;
+$font-poppins: 'Poppins', sans-serif;
+// colors
+$color-dark-text: #484848;
+.title{
+    font-family: $font-volkhov;
+    color: $color-dark-text;
+    font-size: 48px;
+    cursor: pointer;
+}
+.navBarsLinks{
+    font-family: $font-volkhov;
+    color: $color-dark-text;
+    font-size: 20px;
+    cursor: pointer;
+}
+.signInBtn{
+    font-family: $font-poppins;
+    border: none;
+    color: $color-dark-text;
+
+}

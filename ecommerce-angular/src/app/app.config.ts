@@ -1,5 +1,6 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
