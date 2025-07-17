@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { MatToolbar } from "@angular/material/toolbar";
 import { ButtonComponent } from "../../shared/components/button/button.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [MatToolbar, ButtonComponent],
+  imports: [ButtonComponent,RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
