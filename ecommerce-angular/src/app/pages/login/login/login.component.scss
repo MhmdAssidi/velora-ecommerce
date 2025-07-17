@@ -1,13 +1,14 @@
 .container{
-    display: flex;
-    justify-content: flex-end;
-    align-items: start;
-    gap:50px;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 15px;
+    max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+  border-radius: 15px;
   border: 2px solid #DBDBDB;
-    box-shadow: 10px 10px 5px 12px DBDBDB;
+  box-shadow: 10px 10px 5px 2px #DBDBDB;
 
 
 h1{
@@ -58,8 +59,9 @@ h2{
             width: 90%;
             justify-content: space-around;
         
-          .alert{
+         .alert{
             color: red;
+            font-size: 12px;
           }
           mat-label{
             opacity: 0.5;
