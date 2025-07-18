@@ -12,7 +12,7 @@
 </div>
 
 <div class="form">
-<form [formGroup]="signupForm">
+<form [formGroup]="signupForm" (submit)="onSubmit()">
 
   <div class="formBtns">
   <app-button
@@ -94,7 +94,8 @@
  <app-button
   label="Create Account"
   appearance="primary"
-  type="submit"
+  type="button"
+  (onBtnClicked)="onSubmit()"
   customClass="signup-button">
 </app-button>
 </div>
