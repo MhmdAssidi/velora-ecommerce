@@ -3,6 +3,7 @@
   [color]="color"
   [disabled]="disabled"
   [type]="type"
+  (click)="onBtnClicked.emit($event)"
   [ngClass]="[appearance, customClass || '']"> 
 <img *ngIf="imgIcon" [src]="imgIcon" alt="icon">
   {{ label }}
