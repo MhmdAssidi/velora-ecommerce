@@ -1,0 +1,130 @@
+.heroSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: self-start;
+    
+
+    .heroLeftImg{
+        width: 30%;
+        img{
+           width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    }
+
+    .heroCenterContainer{
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content:center;
+        align-items:center;
+        .insideheroCenterContainer{
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+           align-items: center;
+           gap: 40px;
+           width: 90%;
+
+            .heroCenterText{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h2{
+            font-size: 55px;
+            font-weight:900;
+            color: #484848;
+        }
+        #sale{
+color: transparent;
+-webkit-text-stroke: 1px #484848;
+
+        }
+    }
+        }
+
+        .heroCenterBtn{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            p{
+                color: #484848;
+            font-size: 20px;
+
+            }
+        }
+       }
+    }
+    img{
+     width: 100%;
+     border-radius: 10px;
+     object-fit: cover;
+
+
+    }
+
+    .heroRightImg{
+        width: 32%;
+        img{
+            width: 100%;
+            border-radius: 10px;
+            height: 100%;
+            object-fit: cover;
+
+        }
+    }
+@media (min-width: 1500px) {
+ .heroCenterText{
+            h2{
+                font-size:100px !important;
+            }
+            }
+            .heroCenterBtn{
+                p{
+                    font-size: 60px !important;
+                }
+            }
+}
+
+@media (max-width: 1000px) {
+    .heroCenterContainer{
+    width: 25% !important;
+    
+            .heroCenterText{
+            h2{
+                font-size: 45px !important;
+            }
+            }
+}
+}
+@media (max-width: 800px) {
+.heroSection{
+flex-direction: column;
+justify-content: center;
+align-items: center;
+    gap: 35px;
+
+    .heroLeftImg{
+    width: 90%;
+    }
+    .heroCenterContainer{
+    width: 90% !important;
+    .heroCenterText{
+    h2{
+        font-size: 70px !important;
+    }
+}
+        .heroCenterBtn{
+        p{
+            font-size: 30px;
+        }
+        }
+    }
+    .heroRightImg{
+    width: 90% !important;
+    }
+}
+
+}
