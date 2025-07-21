@@ -1,0 +1,33 @@
+.brandsection{
+    margin-top: 20px;
+    width: 100%;
+    height:fit-content;
+    background-color: #484848;
+      overflow: hidden;
+    .image-track {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+    width:100%;
+    animation-name: scrollImages;
+  animation-duration: 59s !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+ 
+
+    img {
+      height: 50px;
+      margin-right: 20px;
+      object-fit: cover;
+      padding: 0 20px;
+    }
+  }
+  @keyframes scrollImages {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+}
