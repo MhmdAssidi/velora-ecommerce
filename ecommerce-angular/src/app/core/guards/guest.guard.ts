@@ -19,7 +19,7 @@ export class GuestGuard implements CanActivate {
       return true;
     } else {
       // user is already logged in:redirect away
-      return this.router.parseUrl('/home'); //
+      return this.router.parseUrl('/home'); 
     }
   }
 }
