@@ -42,7 +42,7 @@ signup(data: {
   Password: string;
   RoleName: string;
 }): Observable<any> {
-  return this.http.post<any>('http://192.168.7.156:5005/api/User/Signup()', data).pipe(
+  return this.http.post<any>('http://192.168.7.156:5005/api/User/SignUp()', data).pipe(
     tap(response => {
       if (response && response.token) {
         this.setToken(response.token);

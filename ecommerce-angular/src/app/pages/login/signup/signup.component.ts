@@ -53,6 +53,7 @@ ngOnInit(): void {
 }
 
 onSubmit() {
+  console.log('in onSubmit');
   if (this.signupForm.invalid) {
     this.signupForm.markAllAsTouched();
     return;
