@@ -1,18 +1,46 @@
+$font-volkhov: 'Volkhov', serif;
+$font-poppins: 'Poppins', sans-serif;
 .dealsContainer{
     display: flex;
-    
+    margin:50px;
+    margin-top: 70px;
     .dealsTextContainer{
         width: 50%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: self-start;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+
+        .dealsTextOne{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            h2{
+                font-family: $font-volkhov;
+                font-size: 48px;
+                color: #484848;
+            
+            }
+            p{
+                font-family: $font-poppins;
+                font-size: 20px;
+                color: #8A8A8A;
+
+            }
+        }
+        .dealsTextTwo{
+            font-family: $font-volkhov;
+            font-size: 40px;
+            color: #484848;
+
+        }
     }
     .dealsImgsContainer{
         width: 50%;
         display: flex;
         justify-content: space-between;
-        align-items: self-start;
+        align-items: center;
         .dealsImgsLeft{
             width: 100%;
             display: flex;
@@ -27,6 +55,7 @@
         .dealsImgRight{
             width: 100%;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             
