@@ -27,7 +27,7 @@ setToken(token: string): void {  //saves the token returned by the backend into 
   login(credentials: { email: string, password: string }): Observable<any> { 
 
     //first send pass and email which are the credentails to the backend api using http
-  return this.http.post<any>('http://192.168.1.187:5005/api/User/Login()', credentials).pipe(
+  return this.http.post<any>('http://192.168.7.156:5005/api/User/Login()', credentials).pipe(
     tap(response => { //tap lets you “do something” after getting a response. response here is what we will get from api 
       if (response && response.token) { //if response return a token
         this.setToken(response.token); //store it in local storage
@@ -42,7 +42,7 @@ signup(data: {
   Password: string;
   RoleName: string;
 }): Observable<any> {
-  return this.http.post<any>('http://192.168.1.187:5005/api/User/Signup()', data).pipe(
+  return this.http.post<any>('http://192.168.7.156:5005/api/User/Signup()', data).pipe(
     tap(response => {
       if (response && response.token) {
         this.setToken(response.token);

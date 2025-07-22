@@ -12,7 +12,7 @@
 </div>
 
 <div class="form">
-<form [formGroup]="signupForm">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
   <div class="formBtns">
   <app-button
