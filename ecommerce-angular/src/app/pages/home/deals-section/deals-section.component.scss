@@ -1,0 +1,40 @@
+.dealsContainer{
+    display: flex;
+    
+    .dealsTextContainer{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: self-start;
+    }
+    .dealsImgsContainer{
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: self-start;
+        .dealsImgsLeft{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            img{
+                width: 90%;
+            }
+        }
+        .dealsImgRight{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+           img{
+                width: 90%;
+            
+            }
+        }
+    }
+   
+}
