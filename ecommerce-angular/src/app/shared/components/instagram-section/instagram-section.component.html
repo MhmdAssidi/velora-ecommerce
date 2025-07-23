@@ -1,0 +1,12 @@
+<section class="instagram-section">
+  <div class="text-container">
+    <h2>Follow Us On Instagram</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Scelerisque duis ultrices sollicitudin aliquam sem.</p>
+  </div>
+
+  <div class="images-container">
+    <div class="image-wrapper" *ngFor="let img of images; let i = index" [class.pop]="i%2==0">
+      <img [src]="img" alt="Instagram Fashion" />
+    </div>
+  </div>
+</section>
