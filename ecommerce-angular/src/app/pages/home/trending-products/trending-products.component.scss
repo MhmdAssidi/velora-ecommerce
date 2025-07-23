@@ -1,0 +1,25 @@
+.trendingProductsContainer{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2{
+        font-size: 48px;
+        color: #484848;
+        margin: 20px;
+    }
+}
+.productCardContainer{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+app-product-card{
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+  box-sizing: border-box;
+}

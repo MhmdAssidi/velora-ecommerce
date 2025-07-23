@@ -1,0 +1,12 @@
+<div class="trendingProductsContainer">
+  <h2>Trending Products</h2>
+<div class="productCardContainer">
+<app-product-card
+*ngFor="let product of products"
+  [image]="product.image"
+  [title]="product.title"
+  [desc]="product.description"
+  [price]="product.price">
+</app-product-card>
+</div>
+</div>
