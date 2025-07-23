@@ -67,3 +67,30 @@ $font-poppins: 'Poppins', sans-serif;
     }
    
 }
+
+@media (max-width: 800px) {
+.dealsContainer{
+flex-direction: column;
+justify-content: center;
+align-items: center;
+.dealsTextContainer{
+    width: 100%;
+        .dealsTextOne{
+        h2{
+            font-size: 35px;
+        }
+        p{
+            font-size: 15px;
+        }
+        }
+        .dealsTextTwo{
+        font-size: 30px;
+        }
+    }
+    .dealsImgsContainer{
+    width: 100%;
+    }
+}
+    
+    
+}
