@@ -7,6 +7,8 @@ import { NewPasswordComponent } from './pages/login/new-password/new-password.co
 import { GuestGuard } from './core/guards/guest.guard';
 import { HomeComponent } from './pages/home/home.component';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -21,11 +23,11 @@ export const routes: Routes = [
     { path: 'forgot-password', component: ForgotPasswordComponent },
     { path: 'confirmation', component: ConfirmationWindowComponent },
       { path: 'new-password', component: NewPasswordComponent },
-  //     {
-  //   path: 'shop',
-  //   component: ShopComponent,
-  //   canActivate: [AuthGuard]
-  // },
+      {
+    path: 'shop',
+    component: ShopComponent,
+    // canActivate: [AuthGuard]
+  },
   // {
   //   path: 'profile',
   //   component: ProfileComponent,
