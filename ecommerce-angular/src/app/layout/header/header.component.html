@@ -30,6 +30,7 @@
       </ul>
 
       <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-2">
+          <ng-container *ngIf="!authService.isLoggedIn(); else loggedInBlock">
         <a routerLink="/signin" class="btn signInBtn">Sign in</a>
         <a routerLink="/signup">
           <app-button
@@ -38,7 +39,11 @@
             customClass="signup-navbar-button">
           </app-button>
         </a>
+        </ng-container>
       </div>
+      <ng-template #loggedInBlock>
+    <button class="btn btn-dark" (click)="logout()">Logout</button>
+  </ng-template>
     </div>
   </div>
 </nav>
