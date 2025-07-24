@@ -1,1 +1,60 @@
-<app-header></app-header>
+<div class="shopContainer">
+    <div class="category-productsCotainer">
+  <div class="categoryContainer">
+    <app-header></app-header>
+
+    <!-- CATEGORY DROPDOWN -->
+    <div class="filter-section">
+      <h3>Category</h3>
+      <div class="dropdown-content">
+        <div *ngFor="let category of categories">
+          <input
+            type="radio"
+            [value]="category"
+            name="category"
+            (change)="selectedCategory = category; applyFilters()" />
+          {{ category }}
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICE DROPDOWN -->
+    <div class="filter-section">
+      <h3>Price</h3>
+      <div class="dropdown-content">
+        <div *ngFor="let range of priceRanges">
+          <input
+            type="radio"
+            name="price"
+            (change)="selectedPriceRange = range; applyFilters()" />
+          {{ range.label }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT CARDS -->
+  <div class="productCardContainer">
+    <app-product-card
+      *ngFor="let product of filteredProducts"
+      [title]="product.title"
+      [desc]="product.description"
+      [price]="product.price"
+      [image]="product.image">
+    </app-product-card>
+  </div>
+</div>
+  <!-- PAGINATION -->
+   <div class="paginationContainer">
+  <nav>
+    <ul class="pagination">
+      <li *ngFor="let page of [1, 2, 3]" (click)="currentPage = page; applyFilters()">
+        <a class="page-link">{{ page }}</a>
+      </li>
+    </ul>
+  </nav>
+  </div>
+</div>
+
+<app-instagram-section></app-instagram-section>
+<app-footer></app-footer>

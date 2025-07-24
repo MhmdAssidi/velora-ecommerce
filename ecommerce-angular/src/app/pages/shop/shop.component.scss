@@ -1,0 +1,62 @@
+
+.shopContainer{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .category-productsCotainer{
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+    }
+    .categoryContainer{
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h5{
+            color: #999999;
+            background-color: #3E3E3E;
+
+           font-family: 'poppins';
+
+        }
+    }
+.productCardContainer{
+    display: flex;
+    width: 80%;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+app-product-card{
+    flex: 1 1 calc(33% - 20px);
+    max-width: calc(33% - 20px);
+  box-sizing: border-box;
+ 
+}
+
+}
+.pagination{
+    display: flex;
+}
+}
+@media (max-width: 1200px) {
+app-product-card{
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(60% - 20px);
+  box-sizing: border-box;
+}
+}
+@media (max-width: 850px) {
+app-product-card{
+    flex: 1 1 calc(70% - 20px);
+    max-width: calc(80% - 20px);
+  box-sizing: border-box;
+}
+
+}
