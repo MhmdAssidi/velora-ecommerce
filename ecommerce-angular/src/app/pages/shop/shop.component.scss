@@ -6,23 +6,44 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    .category-productsCotainer{
+    .category-productsContainer{
         width: 100%;
         display: flex;
         align-items: flex-start;
     }
     .categoryContainer{
+        input[type="radio"] {
+             display: none;
+               }
+
         width: 20%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        h5{
-            color: #999999;
-            background-color: #3E3E3E;
-
+        .filter-section{
+            cursor: pointer;
+        margin-top: 50px;
+        width: 230px;    
+        h3{
+            color: #3E3E3E;
+            background-color: #999999;
            font-family: 'poppins';
+           font-size: 25px;
+            padding: 10px;
+        }
+           .dropdown-content{
+            label{
+            cursor: pointer;
 
+            }
+            input{
+           font-family: 'poppins';
+            color: #3E3E3E;
+            font-size: 20px;
+           } 
+
+        }
         }
     }
 .productCardContainer{
@@ -37,7 +58,6 @@ app-product-card{
     flex: 1 1 calc(33% - 20px);
     max-width: calc(33% - 20px);
   box-sizing: border-box;
- 
 }
 
 }
@@ -47,16 +67,36 @@ app-product-card{
 }
 @media (max-width: 1200px) {
 app-product-card{
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(60% - 20px);
-  box-sizing: border-box;
-}
-}
-@media (max-width: 850px) {
-app-product-card{
-    flex: 1 1 calc(70% - 20px);
-    max-width: calc(80% - 20px);
-  box-sizing: border-box;
+    flex: 1 1 calc(90% - 20px) !important;
+    max-width: calc(90% - 20px) !important;
+    }
+       
+    .categoryContainer{
+    width: 20% !important;
+    }
+.productCardContainer{
+    width: 80% !important;
+    }
 }
 
+@media (max-width: 750px) {
+     h3{
+           font-size: 18px !important;
+        
+        }
+    
+
+        dropdown-content{
+            input{
+           font-size: 16px !important;
+            }
+            }
+      .category-productsContainer{
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    .categoryContainer{
+    margin-bottom: 50px;
+    }
+    }
 }
