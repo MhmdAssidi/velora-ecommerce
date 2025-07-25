@@ -1,34 +1,33 @@
 <div class="shopContainer">
-    <div class="category-productsCotainer">
+    <div class="category-productsContainer">
   <div class="categoryContainer">
     <app-header></app-header>
 
     <!-- CATEGORY DROPDOWN -->
     <div class="filter-section">
-      <h3>Category</h3>
+      <h3>CATEGORY</h3>
       <div class="dropdown-content">
         <div *ngFor="let category of categories">
-          <input
-            type="radio"
-            [value]="category"
-            name="category"
-            (change)="selectedCategory = category; applyFilters()" />
-          {{ category }}
-        </div>
+  <label (click)="selectedCategory = category; applyFilters()" class="filter-option">
+    {{ category }}
+    <input type="radio" [value]="category" name="category" />
+  </label>
+</div>
+
       </div>
     </div>
 
     <!-- PRICE DROPDOWN -->
     <div class="filter-section">
-      <h3>Price</h3>
+      <h3>PRICE</h3>
       <div class="dropdown-content">
         <div *ngFor="let range of priceRanges">
-          <input
-            type="radio"
-            name="price"
-            (change)="selectedPriceRange = range; applyFilters()" />
-          {{ range.label }}
-        </div>
+  <label (click)="selectedPriceRange = range; applyFilters()" class="filter-option">
+    {{ range.label }}
+    <input type="radio" name="price" />
+  </label>
+</div>
+
       </div>
     </div>
   </div>
