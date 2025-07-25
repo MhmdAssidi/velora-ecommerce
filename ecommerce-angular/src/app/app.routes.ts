@@ -26,7 +26,7 @@ export const routes: Routes = [
       {
     path: 'shop',
     component: ShopComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   // {
   //   path: 'profile',
