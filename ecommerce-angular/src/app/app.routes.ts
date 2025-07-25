@@ -16,7 +16,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent }
-    ]
+    ],
   },
    { path: 'signup', component: SignupComponent,canActivate:[GuestGuard]},
    { path: 'signin', component: LoginComponent,canActivate: [GuestGuard]},
@@ -26,7 +26,7 @@ export const routes: Routes = [
       {
     path: 'shop',
     component: ShopComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   // {
   //   path: 'profile',

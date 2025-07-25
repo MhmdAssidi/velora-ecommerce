@@ -43,14 +43,14 @@ onSubmit() {
   }
 
   const credentials = {
-    email: this.signInForm.value.email,
+    Username: this.signInForm.value.email,
     password: this.signInForm.value.password
   };
 
   this.authService.login(credentials).subscribe({
     next: (response) => {
       this.apiErrorMessage = '';
-      this.router.navigate(['/home']); // navigate wherever you want after login
+      this.router.navigate(['/']); // navigate wherever you want after login
     },
     error: (error) => {
       this.apiErrorMessage = 'Invalid username or password';
