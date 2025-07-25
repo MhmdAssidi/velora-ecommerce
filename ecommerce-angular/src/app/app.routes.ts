@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { AuthGuard } from './core/guards/auth.guard';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 
 export const routes: Routes = [
   {
@@ -16,7 +17,7 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', component: HomeComponent }
-    ]
+    ],
   },
    { path: 'signup', component: SignupComponent,canActivate:[GuestGuard]},
    { path: 'signin', component: LoginComponent,canActivate: [GuestGuard]},
@@ -28,11 +29,11 @@ export const routes: Routes = [
     component: ShopComponent,
     // canActivate: [AuthGuard]
   },
-  // {
-  //   path: 'profile',
-  //   component: ProfileComponent,
-  //   canActivate: [AuthGuard]
-  // },
+   {
+     path: 'product/:productId',
+     component: ProductDetailsComponent,
+    //  canActivate: [AuthGuard]
+   },
   // {
   //   path: 'checkout',
   //   component: ProfileComponent,

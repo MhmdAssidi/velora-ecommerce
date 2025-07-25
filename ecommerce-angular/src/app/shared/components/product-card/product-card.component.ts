@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import { ButtonComponent } from "../button/button.component";
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-product-card',
-  imports: [MatCardModule, ButtonComponent],
+  imports: [MatCardModule, ButtonComponent,RouterModule],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'
 })
@@ -12,5 +14,5 @@ export class ProductCardComponent {
   @Input() desc!: string;
   @Input() image!: string;
   @Input() price!: number;
-
+  @Input() productId!:number;
 }

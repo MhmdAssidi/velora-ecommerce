@@ -14,12 +14,13 @@ export class GuestGuard implements CanActivate {
 
   //prevents from loggedin user to navigate again to login page
   canActivate(): boolean | UrlTree {
+    console.log({isLoggedIn:this.authService.isLoggedIn()})
     if (!this.authService.isLoggedIn()) {
       // user is not logged in:allow navigation
       return true;
     } else {
       // user is already logged in:redirect away
-      return this.router.parseUrl('/home'); 
+      return this.router.parseUrl('/'); 
     }
   }
 }

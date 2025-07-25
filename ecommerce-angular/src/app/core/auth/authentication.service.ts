@@ -26,14 +26,14 @@ setToken(token: string): void {  //saves the token returned by the backend into 
     localStorage.removeItem(this.tokenKey);
   }
 
-  login(credentials: { email: string, password: string }): Observable<any> { 
+  login(credentials: { Username: string, password: string }): Observable<any> { 
 
     //first send pass and email which are the credentails to the backend api using http
     return this.http.post<any>('http://192.168.7.156:5005/api/User/Login()', credentials).pipe(
       tap(response => { //tap lets you “do something” after getting a response. response here is what we will get from api 
-        console.log('API Response:', response);  // Log the response
-        if (response && response.token) { //if response return a token
-          this.setToken(response.token); //store it in local storage
+        console.log('API Response:', response.Login.AccessToken);  // Log the response
+        if ( response.Login.AccessToken && response.Login.AccessToken) { //if response return a token
+          this.setToken(response.Login.AccessToken); //store it in local storage
         }
       })
     );

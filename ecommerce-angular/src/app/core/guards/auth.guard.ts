@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
   //used if user wants to navigate to shop page or checkout page without logging in so route him to signin
   canActivate(): boolean | UrlTree {
     if (this.authService.isLoggedIn()) {
+    console.log({isLoggedIn:this.authService.isLoggedIn()})
       // user is logged in:allow navigation
       return true;
     } else {
