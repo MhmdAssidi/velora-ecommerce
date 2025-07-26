@@ -1,0 +1,82 @@
+.fashionContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    width: 100%;
+    margin: 10px 0px;
+    flex-wrap: nowrap;
+    gap: 10px;
+    .imgContainer{
+        width: 50%;
+        img{
+            width:100%;
+        }
+    }
+    .fashionText{
+        width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+        h2{
+            color: #484848;
+            font-size: 32px;
+      font-family: 'volkhov', serif;
+      font-weight: 700;
+        }
+        .fashionParag{
+        p{
+
+         color: #8A8A8A;
+      font-family: 'poppins', serif;
+      font-size: 18px;
+
+        }
+    }
+        .fashionStat{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            gap: 20px;
+            .fashionStatNumbers{
+                span{
+             font-family: 'poppins', serif;
+               font-weight: 800;
+               font-size: 22px;         
+               color: #484848;
+                }
+                p{
+           font-family: 'poppins', serif;
+               font-size: 15px;         
+               font-weight: 600;
+             color: #484848;
+                }
+            }
+            .fashionStatNumbers{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+@media (max-width: 1147px) {
+.fashionContainer{
+flex-direction: column;
+margin-top: 20px;
+}
+    .imgContainer{
+    width: 90% !important;
+    }
+    .fashionText{
+    width: 100% !important;
+    align-items: center !important;
+    h2{
+        font-size: 40px !important;
+    }
+        .fashionStat{
+        justify-content: space-between !important;
+        
+        }
+    }
+}
