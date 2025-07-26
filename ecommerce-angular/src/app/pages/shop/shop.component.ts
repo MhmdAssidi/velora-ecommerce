@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from "../../shared/components/product-card/product-card.component";
 import { InstagramSectionComponent } from "../../shared/components/instagram-section/instagram-section.component";
 import { FooterComponent } from "../../layout/footer/footer.component";
+import { FindFashionSectionComponent } from '../../shared/components/find-fashion-section/find-fashion-section.component';
 @Component({
   selector: 'app-shop',
-  imports: [HeaderComponent, CommonModule, ProductCardComponent, InstagramSectionComponent, FooterComponent],
+  imports: [HeaderComponent, CommonModule, ProductCardComponent, InstagramSectionComponent, FooterComponent, FindFashionSectionComponent],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })

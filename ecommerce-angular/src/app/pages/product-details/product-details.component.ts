@@ -5,9 +5,10 @@ import { HeaderComponent } from "../../layout/header/header.component";
 import { ButtonComponent } from "../../shared/components/button/button.component";
 import { FooterComponent } from "../../layout/footer/footer.component";
 import { ActivatedRoute } from '@angular/router';
+import { FindFashionSectionComponent } from "../../shared/components/find-fashion-section/find-fashion-section.component";
 @Component({
   selector: 'app-product-details',
-  imports: [CommonModule, HeaderComponent, ButtonComponent, FooterComponent],
+  imports: [CommonModule, HeaderComponent, ButtonComponent, FooterComponent, FindFashionSectionComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
