@@ -15,10 +15,16 @@ export interface Product {
 export class ProductsService {
 
 private apiUrl = 'https://fakestoreapi.com/products';
+private apiUrlSingleProd = 'https://fakestoreapi.com/products/1';
 
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
+
+ getSingleProduct(productId: number): Observable<Product> {
+  return this.http.get<Product>(`${this.apiUrl}/${productId}`);
+}
+
 }
