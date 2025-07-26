@@ -1,1 +1,58 @@
-<p>product-details works!</p>
+
+<app-header></app-header>
+<div class="product-details-container">
+    <div class="productImg">
+<img [src]="singleProduct.image">
+    </div>
+<div class="productDetailsContainer">
+
+ <div class="productTitle">   
+<h2>{{singleProduct.title}}</h2>
+</div>
+<div class="productPrice">
+<p>${{singleProduct.price}}</p>
+</div>
+<div class="productDesc">
+<p>{{singleProduct.description}}</p>
+</div>
+<div class="size-options">
+  <button
+    *ngFor="let size of sizes"
+    [class.selected]="selectedSize === size"
+    (click)="selectedSize = size"
+    class="size-btn">
+    {{ size }}
+  </button>
+</div>
+
+<div class="productColor">
+<button
+*ngFor="let color of colors"
+class="color-circle"
+[ngStyle]="{'background-color':color}"
+(click)="selectedColor=color"
+[class.selected]="selectedColor === color"
+>
+</button>
+</div>
+<div class="quantity">
+
+<div class="quantity-selector">
+  <button class="qty-btn" (click)="decreaseQuantity()">-</button>
+  <span class="quantity">{{ quantity }}</span>
+  <button (click)="increaseQuantity()" class="qty-btn">+</button>
+</div>
+
+<app-button
+label="Add to Cart"
+appearance="primary"
+></app-button>
+</div>
+<div class="shipping">
+Free Shipping & Returns: On all orders over $75
+</div>
+</div>
+
+</div>
+
+<app-footer></app-footer>
