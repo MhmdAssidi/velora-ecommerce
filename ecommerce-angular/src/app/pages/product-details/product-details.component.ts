@@ -6,6 +6,9 @@ import { ButtonComponent } from "../../shared/components/button/button.component
 import { FooterComponent } from "../../layout/footer/footer.component";
 import { ActivatedRoute } from '@angular/router';
 import { FindFashionSectionComponent } from "../../shared/components/find-fashion-section/find-fashion-section.component";
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../core/auth/authentication.service';
+import { CartService } from '../../shared/services/cart.service';
 @Component({
   selector: 'app-product-details',
   imports: [CommonModule, HeaderComponent, ButtonComponent, FooterComponent, FindFashionSectionComponent],
@@ -13,7 +16,7 @@ import { FindFashionSectionComponent } from "../../shared/components/find-fashio
   styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
-    constructor(private productService: ProductsService, private route:ActivatedRoute) {}
+    constructor(private productService: ProductsService, private route:ActivatedRoute,private authService:AuthenticationService,private router:Router,private cartService:CartService) {}
   
 selectedSize:string=''
 sizes=['XXS','XS','S','L','XL','XXL'];
@@ -43,5 +46,24 @@ ngOnInit(): void {
     // console.log(this.singleProduct)
   })
 }
+}
+
+handleAddToCart():void {
+  if (!this.authService.isLoggedIn()){
+    this.router.navigate(['/signup']);
+    return;
+  }
+
+if(!this.singleProduct || !this.selectedColor || !this.selectedSize){
+  alert('select size and color');
+  return;
+}
+this.cartService.addToCart(this.singleProduct,this.quantity,this.selectedColor,this.selectedSize);
+alert('added to cart');
+console.log(this.singleProduct);
+console.log(this.quantity);
+console.log(this.selectedColor);
+console.log(this.selectedSize);
+
 }
 }
