@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ButtonComponent } from "../../shared/components/button/button.component";
 
 import { Router, RouterModule } from '@angular/router';
 import { AuthenticationService } from '../../core/auth/authentication.service';
 import { CommonModule } from '@angular/common'; 
-
+import { CartService } from '../../shared/services/cart.service';
+import { count } from 'rxjs';
 @Component({
   selector: 'app-header',
   imports: [ButtonComponent,RouterModule,CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
-  constructor(public authService: AuthenticationService,private router: Router) {}
+export class HeaderComponent implements OnInit {
+  constructor(public authService: AuthenticationService,private router: Router,private cartService:CartService) {}
+  
+  cartCount=0;
+  ngOnInit(): void {
+      this.cartService.cartCount$.subscribe(count=>{
+        this.cartCount=count;
+      })
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['']);
   }
+
+
 
 }
