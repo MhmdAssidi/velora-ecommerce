@@ -10,6 +10,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { ShopComponent } from './pages/shop/shop.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -27,17 +28,18 @@ export const routes: Routes = [
       {
     path: 'shop',
     component: ShopComponent,
-    // canActivate: [AuthGuard]
+    
   },
    {
      path: 'product/:productId',
      component: ProductDetailsComponent,
-    //  canActivate: [AuthGuard]
+ 
    },
-  // {
-  //   path: 'checkout',
-  //   component: ProfileComponent,
-  //   canActivate: [AuthGuard]
-  // }
+  {
+    path: 'cart',
+    component: CartComponent,
+    // canActivate: [AuthGuard]
+  },
+  // { path: 'checkout', component: HomeComponent },
     { path: '', redirectTo: 'signup', pathMatch: 'full' },
 ];

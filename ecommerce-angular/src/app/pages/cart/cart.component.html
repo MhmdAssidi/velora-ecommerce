@@ -1,0 +1,63 @@
+<app-header></app-header>
+
+<div class="shoppingCart">
+    <div class="title">
+<h2>Shopping Cart</h2>
+</div>
+<div class="cartContainer">
+<table mat-table [dataSource]="cartItems" class="mat-elevation-z8">
+
+  <!-- Product Column -->
+  <ng-container matColumnDef="item">
+    <th mat-header-cell *matHeaderCellDef> Product </th>
+    <td mat-cell *matCellDef="let item"> 
+        <div class="product-cell">
+            <img [src]="item.image">
+            <div class="product-details">
+                <p class="product-title">{{item.title}}</p>
+                <a (click)="removeItem(item)" class="remove-link">remove</a>
+            </div>
+        </div>
+    </td>
+    <td mat-footer-cell *matFooterCellDef> Total </td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef> Price </th>
+    <td mat-cell *matCellDef="let item"> ${{item.price}} </td>
+    <td mat-footer-cell *matFooterCellDef> </td>
+  </ng-container>
+
+  <!-- Quantity Column -->
+  <ng-container matColumnDef="quantity">
+    <th mat-header-cell *matHeaderCellDef> Quantity </th>
+    <td mat-cell *matCellDef="let item"> {{item.quantity}} </td>
+    <td mat-footer-cell *matFooterCellDef></td>
+  </ng-container>
+
+  <!-- Total Column -->
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef> Total </th>
+    <td mat-cell *matCellDef="let item">
+      {{ item.price*item.quantity }}
+    </td>
+    <td mat-footer-cell *matFooterCellDef> {{ getTotalCost() | currency }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+</table>
+
+</div>
+<div class="checkoutContainer mt-2">
+  <a routerLink="/checkout">
+    <app-button
+      label="Checkout"
+      appearance="primary">
+    </app-button>
+  </a>
+</div>
+
+</div>
