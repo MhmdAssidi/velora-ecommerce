@@ -11,6 +11,7 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 export const routes: Routes = [
   {
@@ -38,8 +39,8 @@ export const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
-  // { path: 'checkout', component: HomeComponent },
+  { path: 'checkout', component: CheckoutComponent },
     { path: '', redirectTo: 'signup', pathMatch: 'full' },
 ];
