@@ -71,7 +71,7 @@ onSubmit() {
   this.authService.signup(signupData).subscribe({
   next: (response) => {
     console.log('Signup successful!', response);
-    this.router.navigate(['/']);
+    this.router.navigate(['/signin']);
   },
   error: (error) => {
     console.error('Signup error', error);
