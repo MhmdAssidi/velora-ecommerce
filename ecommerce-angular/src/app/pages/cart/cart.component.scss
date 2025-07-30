@@ -1,35 +1,98 @@
-.shoppingCart{
+.shoppingCart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 50px;
+  margin-top: 100px;
+  .cartContainer {
+    width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    gap: 30px;
-    margin-top: 100px;
-    .cartContainer{
-        width: 100%;
-        display: flex;
-        justify-content: center;
+   
+    .product-cell {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 30px;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      color: #3e3e3e;
+
+      .remove-link {
+        color: #ff0000;
+        font-weight: 400;
+        text-decoration: underline;
+        cursor: pointer; 
+      }
+
+      img {
+        width: 50%;
+        height: auto;
+        object-fit: cover; 
+      }
     }
-.checkoutContainer{
+  }
+
+  .checkoutContainer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     width: 65%;
-   
-}
-.title{
-    h2{
-     font-family: 'volkhov', serif;
-        font-size: 40px;
-        font-weight: 600;
-         color: #000000;
+  }
+
+  .title {
+    h2 {
+      font-family: 'Volkhov', serif;
+      font-size: 40px;
+      font-weight: 600;
+      color: #000000;
     }
+  }
+  .empty{
+    font-size: 40px;
+      font-family: 'Poppins', serif;
+      color: #3e3e3e;
+  }
 }
-
-}
-
 
 tr.mat-mdc-footer-row td {
   font-weight: bold;
+font-size: 20px;
+
+}
+
+th.mat-header-cell {
+  font-family: 'Volkhov', serif;
+  font-weight: 600;
+
+}
+
+td.mat-cell {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400; 
+}
+
+
+td.mat-mdc-cell.cdk-column-item {
+  width: 50%; 
+}
+
+@media (max-width: 550px) {
+.shoppingCart {
+  .cartContainer {
+    .product-cell{
+    font-size: 14px !important;
+    gap: 15px !important;
+    flex-direction: column !important;
+      img {
+      width: 100%;
+      }
+  }
+}
+}
 }

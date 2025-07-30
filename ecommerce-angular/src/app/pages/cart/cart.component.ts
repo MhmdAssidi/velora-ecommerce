@@ -6,10 +6,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ButtonComponent } from "../../shared/components/button/button.component";
 import { RouterModule } from '@angular/router';
 import { CartItem, CartService } from '../../shared/services/cart.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cart',
-  imports: [MatTableModule, CurrencyPipe, HeaderComponent, MatTooltipModule, ButtonComponent,RouterModule],
+  imports: [MatTableModule, CurrencyPipe, HeaderComponent, MatTooltipModule, ButtonComponent,RouterModule,CommonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
