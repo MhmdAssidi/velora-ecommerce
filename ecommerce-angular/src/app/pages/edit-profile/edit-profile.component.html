@@ -1,0 +1,109 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="sideBar">
+        <div class="thePage">
+            <p><i class="bi bi-pen"></i> Edit Profile</p>
+        </div>
+        <div>
+            <p><i class="bi bi-bell"></i>Notification</p>
+        </div>
+        <div>
+            <p><i class="bi bi-lock"></i>Security</p>
+        </div>
+        <div>
+            <p><i class="bi bi-gear"></i>Appearance</p>
+        </div>
+        <div>
+            <p><i class="bi bi-question-circle"></i>Help</p>
+        </div>
+    </div>
+
+
+<div class="userInfoContainer">
+    <div class="userImgTitle">
+        <div><h2>Edit Profile</h2></div>
+        <div><img src="images/profile.png" alt=""></div>
+    </div>
+    <div class="formContainer">
+    <form [formGroup]="editProfileForm" (submit)="onSubmit()">
+        <div class="inputFirstLastName">
+  <mat-form-field appearance="outline" class="wide-field" floatLabel="always">
+    <mat-label>First Name</mat-label>
+    <input matInput formControlName="firstName" />
+      <mat-error *ngIf="editProfileForm.get('firstName')?.hasError('required')" class="alert">
+    Please enter your first name
+  </mat-error>
+  </mat-form-field>
+ <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName" />
+      <mat-error *ngIf="editProfileForm.get('lastName')?.hasError('required')" class="alert">
+    Please enter your last name
+  </mat-error>
+  </mat-form-field>
+</div>
+
+     <div class="email">
+          <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+    <mat-error *ngIf="editProfileForm.get('email')?.hasError('email')" class="alert">
+    Please enter a valid email
+  </mat-error>
+  </mat-form-field>
+     </div>
+     <div class="address">
+          <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>address</mat-label>
+    <input matInput formControlName="address" />
+    <mat-error *ngIf="editProfileForm.get('address')?.hasError('address')" class="alert">
+    Please enter address
+  </mat-error>
+  </mat-form-field>
+     </div>
+     <div class="contactNumber">
+         <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Contact number</mat-label>
+    <input matInput formControlName="contactNumber" />
+    <mat-error *ngIf="editProfileForm.get('contactNumber')?.hasError('contactNumber')" class="alert">
+    Please enter contact number
+  </mat-error>
+  </mat-form-field>
+     </div>
+
+     <div class="cityInput">
+        <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>City</mat-label>
+    <input matInput formControlName="city" />
+    <mat-error *ngIf="editProfileForm.get('city')?.hasError('city')" class="alert">
+    Please enter city
+  </mat-error>
+  </mat-form-field>
+     </div>
+
+     <div class="passwordInput">
+        <mat-form-field appearance="outline" class="wide-field">
+    <mat-label>Password</mat-label>
+    <input matInput formControlName="password" />
+    <mat-error *ngIf="editProfileForm.get('password')?.hasError('password')" class="alert">
+    Please enter password
+  </mat-error>
+  </mat-form-field>
+     </div>
+
+<div class="buttons"> 
+<app-button
+  label="Save"
+  appearance="primary"
+  type="button"
+  customClass="signup-button"
+  (onBtnClicked)="onSubmit()"
+  >
+</app-button>
+</div>
+</form>
+    </div>
+</div>
+</div>
+<app-footer></app-footer>

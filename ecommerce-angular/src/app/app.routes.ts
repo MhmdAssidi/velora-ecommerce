@@ -12,6 +12,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 export const routes: Routes = [
   {
@@ -42,5 +43,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
+
     { path: '', redirectTo: 'signup', pathMatch: 'full' },
 ];
