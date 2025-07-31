@@ -20,7 +20,7 @@
         width:98vw;
         overflow: hidden;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
 
         .inputTypes{
             width: 50%;
@@ -46,5 +46,114 @@
             }
         }
         } 
+
+        .products{
+          width: 50%;
+          background-color: #F5F5F5;
+          font-family: 'poppins';
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+         align-items: flex-start;
+         gap: 40px;
+          .eachProduct{
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: nowrap;
+            border-bottom: 1px solid black;
+            .img{
+          margin-top: 20px;
+              width: 30%;
+              img{
+                width: 100%;
+              }
+            }
+            .title{
+              p{
+                font-size: 20px;
+                color: #000000;
+
+              }
+              span{
+                color: #484848;
+                font-size: 14px;
+              }
+            }
+          }
+          .productInfo{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            gap: 40px;
+           
+          }
+           .total{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              width: 100%;
+              font-size: 15px;
+              .subtotal{
+                color: #484848;
+                .totalPrice{
+                  color: #000000;
+                  font-weight: 700;
+                }
+              }
+            }
+        }
+        .emptyCart{
+       
+          font-size: 30px;
+          color: #484848;
+        }
        }  
-         }
+      }
+
+@media (max-width: 1120px) {
+
+.products{
+  .eachProduct{
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start !important;
+    .title{
+      p{
+        font-size: 26px !important;
+  }
+  span{
+    font-size: 18px !important;
+  }
+  .price{
+    font-size: 16px !important;
+  }
+}
+        .img{
+          margin-top: 20px;
+          width: 90% !important;
+    
+           }
+}
+}
+}
+@media (max-width: 800px) {
+
+.productInfo{
+  flex-direction: column;
+}
+.total{
+ flex-wrap: wrap;
+ font-size: 12px !important;
+}
+  mat-form-field{
+gap: 30px !important;
+    mat-error{
+    font-size: 9px;   
+    
+    }
+}
+}
