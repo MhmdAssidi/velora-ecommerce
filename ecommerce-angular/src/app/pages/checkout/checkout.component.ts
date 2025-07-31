@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../core/auth/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CartItem, CartService } from '../../shared/services/cart.service';
 @Component({
   selector: 'app-checkout',
   imports: [HeaderComponent, ButtonComponent, MatInputModule, ReactiveFormsModule, FooterComponent,CommonModule],
@@ -16,7 +17,8 @@ import { CommonModule } from '@angular/common';
 })
 export class CheckoutComponent {
   checkoutForm!: FormGroup;
-  constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService) {}
+  constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService,private cartService:CartService) {}
+cartItems: CartItem[] = [];
 
 ngOnInit(): void {
   this.checkoutForm = this.fb.group({
@@ -28,7 +30,12 @@ ngOnInit(): void {
     cardNumber: ['', Validators.required],
     cardHolderName: ['', Validators.required]
   });
+    this.cartItems = this.cartService.getItems(); 
+
 }
+getTotalCost():number {
+    return this.cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+  }
 onSubmit() {
   if (this.checkoutForm.invalid) {
     this.checkoutForm.markAllAsTouched();
