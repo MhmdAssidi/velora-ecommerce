@@ -49,10 +49,10 @@ ngOnInit(): void {
 }
 
 handleAddToCart():void {
-  // if (!this.authService.isLoggedIn()){
-  //   this.router.navigate(['/signup']);
-  //   return;
-  // }
+  if (!this.authService.isLoggedIn()){
+    this.router.navigate(['/signup']);
+    return;
+  }
 
 if(!this.singleProduct || !this.selectedColor || !this.selectedSize){
   alert('select size and color');

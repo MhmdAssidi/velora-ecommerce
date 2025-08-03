@@ -77,3 +77,20 @@ padding-bottom: 20px;
     }
 }
 }
+
+@media (max-width: 700px) {
+.container{
+flex-direction: column !important;
+justify-content: center !important;
+
+   }
+.sideBar {
+    height: 40vh !important;
+    justify-content: center !important;
+    gap: 30px !important;
+    width: 100% !important;
+}
+.userInfoContainer{
+width: 100% !important;
+}
+}
