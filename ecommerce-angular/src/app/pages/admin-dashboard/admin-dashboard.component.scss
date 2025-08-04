@@ -89,7 +89,7 @@ align-items: center;
 
 .pieChartContainer{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   border: 2px solid black;
   padding: 10px;
 
@@ -107,7 +107,7 @@ align-items: center;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 .pieChartContainer{
   flex-direction: column;
   }
