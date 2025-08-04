@@ -62,5 +62,22 @@ isLoggedIn(): boolean {
 logout(): void {
     this.clearToken();
   }
+
+  getLoggedInUser():string | null{
+    const userData=localStorage.getItem('user');
+    if(userData){
+      const user=JSON.parse(userData);
+      return user.email || null;
+    }
+    else{
+      return null;
+    }
+  }
+
+  isAdmin(): boolean {
+  const userEmail = this.getLoggedInUser();
+  return userEmail === 'mhmd.admin@gmail.com';
+}
+
 }
 
