@@ -13,6 +13,7 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { CartComponent } from './pages/cart/cart.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { adminGuard } from './core/guards/admin.guard';
 
 export const routes: Routes = [
   {
@@ -45,5 +46,10 @@ export const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'edit-profile', component: EditProfileComponent },
 
+  {path:'admin',
+    loadComponent:()=>
+      import('./pages/admin-dashboard/admin-dashboard.component').then(m=>m.AdminDashboardComponent),
+    // canActivate:[adminGuard]
+  },
     { path: '', redirectTo: 'signup', pathMatch: 'full' },
 ];

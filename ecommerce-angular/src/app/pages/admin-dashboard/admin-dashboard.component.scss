@@ -1,0 +1,117 @@
+$font-volkhov: 'Volkhov', serif;
+$font-poppins: 'Poppins', sans-serif;
+// colors
+$color-dark-text: #484848;
+.header{
+    margin-top: 100px;
+}
+.title{
+    font-family: $font-volkhov;
+    color: $color-dark-text;
+    font-size: 48px;
+    cursor: pointer;
+}
+
+   
+.adminTitle{
+    font-family: $font-poppins;
+    font-size: 48px;
+    font-weight: 700;
+    padding-left: 60px;
+}
+
+:host ::ng-deep {
+  .custom-search-group {
+    .custom-search-input {
+      border: none;
+      background-color: #E5E4DE;
+      border-radius: 5px 0 0 5px;
+      box-shadow: none;
+      font-family: 'Poppins', sans-serif;
+        padding: 5px;
+      &:focus {
+        background-color: #e9ecef;
+      }
+    }
+
+    .custom-search-icon {
+      background-color: #E5E4DE;
+      border: none;
+      color: #637381;
+      font-size: 16px;
+      padding: 10px;
+      
+    }
+  }
+}
+.container{
+    font-family: $font-poppins;
+    .card{
+        border: 1px solid #E7E7E7;
+    }
+    .card-body{
+    display: flex;
+    flex-direction: column;
+align-items: center;    
+.price{
+    color: #212B36;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.titleCard{
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-weight: 500;
+    p{
+        font-size: 14px;
+        color: #637381;
+    }
+    .prcntg{
+        font-size: 13px;
+        color: #45CB85;
+    }
+}
+    }
+.icon{
+    background-color: #EFF2F7;
+    border-radius: 50%;
+    width: 20%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+}
+
+.pieChartContainer{
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid black;
+  padding: 10px;
+
+}
+.graph-container{
+  border: 2px solid black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+  .chart{
+    width: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+.pieChartContainer{
+  flex-direction: column;
+  }
+.graph-container{
+  flex-direction: column;
+  }
+}
