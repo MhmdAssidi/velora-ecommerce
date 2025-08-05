@@ -49,7 +49,7 @@ export const routes: Routes = [
   {path:'admin',
     loadComponent:()=>
       import('./pages/admin-dashboard/admin-dashboard.component').then(m=>m.AdminDashboardComponent),
-    // canActivate:[adminGuard]
+    canActivate:[adminGuard]
   },
     { path: '', redirectTo: 'signup', pathMatch: 'full' },
 ];

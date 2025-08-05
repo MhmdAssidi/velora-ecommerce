@@ -6,9 +6,10 @@ import { AuthenticationService } from '../../core/auth/authentication.service';
 import { CommonModule } from '@angular/common'; 
 import { CartService } from '../../shared/services/cart.service';
 import { count } from 'rxjs';
+import { CdkNoDataRow } from "@angular/cdk/table";
 @Component({
   selector: 'app-header',
-  imports: [ButtonComponent,RouterModule,CommonModule],
+  imports: [ButtonComponent, RouterModule, CommonModule, CdkNoDataRow],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
