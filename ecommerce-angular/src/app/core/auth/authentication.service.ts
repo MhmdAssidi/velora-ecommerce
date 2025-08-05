@@ -34,6 +34,13 @@ setToken(token: string): void {  //saves the token returned by the backend into 
         console.log('API Response:', response.Login.AccessToken);  // Log the response
         if ( response.Login.AccessToken && response.Login.AccessToken) { //if response return a token
           this.setToken(response.Login.AccessToken); //store it in local storage
+          const userData = {
+          email: credentials.Username, // Use the provided email from credentials
+          firstName: response.Login.Firstname, // Use data returned from API
+          lastName: response.Login.Lastname,
+          role: response.Login.RoleName,
+        };
+          localStorage.setItem('user', JSON.stringify(userData));
         }
       })
     );
@@ -65,19 +72,20 @@ logout(): void {
 
   getLoggedInUser():string | null{
     const userData=localStorage.getItem('user');
+    if(!userData){
+      console.log("in getLoggedInUser function,no user returned from localstorage");
+    return null;
+    }
     if(userData){
       const user=JSON.parse(userData);
-      return user.email || null;
+      return user.email;
     }
     else{
       return null;
     }
   }
 
-  isAdmin(): boolean {
-  const userEmail = this.getLoggedInUser();
-  return userEmail === 'mhmd.admin@gmail.com';
-}
+
 
 }
 
