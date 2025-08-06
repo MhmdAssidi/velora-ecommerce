@@ -3,27 +3,34 @@
   border-radius: 0px;
   overflow: hidden;
   transition: transform 0.4s;
-
+    border: 3px solid #757575;
+    padding: 20px 10px;
+    background-color: #a59a9a4d;
+height: 300px;
+width: fit-content;
   &:hover {
     transform: scale(1.03);
   }
-
+  .img-container{
+    width: 50%;
+    max-width:50%;
+  }
   img {
     width: 80%;
-    max-width: 80%;
+    max-width: 90%;
     object-fit: cover;
   }
-
+ 
   mat-card-content {
     h2 {
-      font-size: 18px;
+      font-size: 16px;
       color: #757575;
       margin: 15px 0 15px;
   font-family: 'Poppins', sans-serif;
 
     }
     p {
-      font-size: 20px;
+      font-size: 14px;
       color: #3E3E3E;
   font-family: 'Poppins', sans-serif;
     }
@@ -33,7 +40,7 @@
   mat-card-actions {
     
     .price{
-      font-size: 24px;
+      font-size: 20px;
   font-family: 'Poppins', sans-serif;
       color: #757575;
     }

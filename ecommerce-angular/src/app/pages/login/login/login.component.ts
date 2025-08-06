@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from "../../../shared/components/button/button.component";
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/auth/authentication.service';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ import { AuthenticationService } from '../../../core/auth/authentication.service
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ButtonComponent
+    ButtonComponent,RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -48,7 +49,7 @@ onSubmit() {
   };
 
   this.authService.login(credentials).subscribe({
-    next: (response) => {
+    next: () => {
       this.apiErrorMessage = '';
       this.router.navigate(['/']); // navigate wherever you want after login
     },

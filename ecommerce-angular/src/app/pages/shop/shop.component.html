@@ -3,32 +3,43 @@
   <div class="categoryContainer">
     <app-header></app-header>
 
-    <!-- CATEGORY DROPDOWN -->
     <div class="filter-section">
       <h3>CATEGORY</h3>
       <div class="dropdown-content">
-        <div *ngFor="let category of categories">
-  <label (click)="selectedCategory = category; applyFilters()" class="filter-option">
-    {{ category }}
-    <input type="radio" [value]="category" name="category" />
-  </label>
-</div>
+      <mat-radio-group 
+      aria-label="Select a category"
+      >
+
+      <mat-radio-button
+        *ngFor="let category of categories"
+        [value]="category"
+        class="filter-option"
+        (click)="selectedCategory = category; applyFilters()">
+        {{ category }}
+      </mat-radio-button>
+
+    </mat-radio-group>
 
       </div>
     </div>
 
-    <!-- PRICE DROPDOWN -->
     <div class="filter-section">
       <h3>PRICE</h3>
       <div class="dropdown-content">
-        <div *ngFor="let range of priceRanges">
-  <label (click)="selectedPriceRange = range; applyFilters()" class="filter-option">
-    {{ range.label }}
-    <input type="radio" name="price" />
-  </label>
-</div>
+     <mat-radio-group 
+      aria-label="Select a Price"
+      >
 
-      </div>
+      <mat-radio-button
+        *ngFor="let price of priceRanges"
+        [value]="price"
+        class="filter-option"
+        (click)="selectedPriceRange = price; applyFilters()">
+        {{ price.label }}
+      </mat-radio-button>
+
+    </mat-radio-group>
+  </div>
     </div>
   </div>
 

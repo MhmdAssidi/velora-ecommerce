@@ -37,7 +37,7 @@
   <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Email address</mat-label>
     <input matInput formControlName="email" />
-    <mat-error *ngIf="signInForm.get('email')?.hasError('email')" class="alert">
+<mat-error *ngIf="signInForm.get('email')?.hasError('email') && signInForm.get('email')?.touched" class="alert">
     Please enter a valid email address
   </mat-error>
   </mat-form-field>
@@ -69,7 +69,9 @@
   label="Register Now"
   appearance="primary"
   type="submit"
-  customClass="register-now-button">
+  customClass="register-now-button"
+  [routerLink]="'/signup'">
+
 </app-button>
 </div>
 </div>

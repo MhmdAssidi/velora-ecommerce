@@ -103,9 +103,15 @@
     }
 }
 @media (max-width: 500px) {
+    
    .footerlinks{
     font-size: 13px;
    
    }
+   .footerContainer2{
+        img{
+            width:80% !important;
+        }
+    }
 }
 

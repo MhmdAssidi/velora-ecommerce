@@ -7,9 +7,11 @@ import { ProductCardComponent } from "../../shared/components/product-card/produ
 import { InstagramSectionComponent } from "../../shared/components/instagram-section/instagram-section.component";
 import { FooterComponent } from "../../layout/footer/footer.component";
 import { FindFashionSectionComponent } from '../../shared/components/find-fashion-section/find-fashion-section.component';
+import {MatRadioModule} from '@angular/material/radio';
+
 @Component({
   selector: 'app-shop',
-  imports: [HeaderComponent, CommonModule, ProductCardComponent, InstagramSectionComponent, FooterComponent, FindFashionSectionComponent],
+  imports: [HeaderComponent, CommonModule, ProductCardComponent, InstagramSectionComponent, FooterComponent, FindFashionSectionComponent,MatRadioModule],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
@@ -48,7 +50,6 @@ applyFilters(): void {
     filtered = filtered.filter(product => product.price >= min && product.price <= max);
   }
 
-  // Pagination logic
   const startIndex = (this.currentPage - 1) * this.productsPerPage;
   const endIndex = startIndex + this.productsPerPage;
   this.filteredProducts = filtered.slice(startIndex, endIndex).map(product=>({
