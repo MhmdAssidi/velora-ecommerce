@@ -33,9 +33,15 @@
             padding: 10px;
         }
            .dropdown-content{
-            label{
+            background-color: #e5e5e5;
+            padding: 20px;
+            border-radius: 5px;
+            mat-radio-button{
             cursor: pointer;
-
+                font-size: 20px;
+           font-family: 'poppins';
+            color: #3E3E3E;
+                
             }
             input{
            font-family: 'poppins';
@@ -63,6 +69,12 @@ app-product-card{
 }
 .pagination{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    li{
+        cursor: pointer;
+    }
 }
 }
 @media (max-width: 1200px) {
