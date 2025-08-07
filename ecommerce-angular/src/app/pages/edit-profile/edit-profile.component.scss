@@ -63,6 +63,15 @@ padding-bottom: 20px;
         display: flex;
         flex-direction: column;
         width: 100%;
+        .form{
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            mat-error{
+                color: red;
+        font-family: 'poppins';
+            }
+        }
         .inputFirstLastName{
             display: flex;
             justify-content: space-between;
@@ -92,5 +101,12 @@ justify-content: center !important;
 }
 .userInfoContainer{
 width: 100% !important;
+.formContainer{
+    .form{
+        mat-error{
+            font-size: 12px;
+        }
+    }
+}
 }
 }

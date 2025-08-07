@@ -41,9 +41,9 @@ export const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
-  { path: 'checkout', component: CheckoutComponent},
+  { path: 'checkout', component: CheckoutComponent,canActivate:[AuthGuard]},
   { path: 'edit-profile', component: EditProfileComponent,canActivate:[AuthGuard] },
 
   {path:'admin',
