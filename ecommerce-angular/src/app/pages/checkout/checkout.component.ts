@@ -36,11 +36,20 @@ ngOnInit(): void {
 getTotalCost():number {
     return this.cartItems.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
   }
+  checkoutComplete = false;
+
 onSubmit() {
   if (this.checkoutForm.invalid) {
     this.checkoutForm.markAllAsTouched();
     return;
   }
-
+const checkoutData = {
+  ...this.checkoutForm.value,
+  items: this.cartItems,
+  total: this.getTotalCost() + 40,
+  date: new Date().toLocaleString()
+};
+localStorage.setItem('checkoutInfo',JSON.stringify(checkoutData));
+this.checkoutComplete=true;
 }
 }
