@@ -25,9 +25,9 @@ export const routes: Routes = [
   },
    { path: 'signup', component: SignupComponent,canActivate:[GuestGuard]},
    { path: 'signin', component: LoginComponent,canActivate: [GuestGuard]},
-    { path: 'forgot-password', component: ForgotPasswordComponent },
-    { path: 'confirmation', component: ConfirmationWindowComponent },
-      { path: 'new-password', component: NewPasswordComponent },
+    { path: 'forgot-password', component: ForgotPasswordComponent,canActivate:[AuthGuard]},
+    { path: 'confirmation', component: ConfirmationWindowComponent,canActivate:[AuthGuard]},
+      { path: 'new-password', component: NewPasswordComponent,canActivate:[AuthGuard]},
       {
     path: 'shop',
     component: ShopComponent,
@@ -43,8 +43,8 @@ export const routes: Routes = [
     component: CartComponent,
     canActivate: [AuthGuard]
   },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
+  { path: 'checkout', component: CheckoutComponent,canActivate:[AuthGuard]},
+  { path: 'edit-profile', component: EditProfileComponent,canActivate:[AuthGuard] },
 
   {path:'admin',
     loadComponent:()=>

@@ -32,14 +32,15 @@
       <!-- Right side of navbar -->
       <div class="d-flex align-items-center gap-3">
         <!-- If NOT logged in: show Sign in / Sign up -->
-        <ng-container *ngIf="authService.isLoggedIn() else guestButtons">
+        <!-- <ng-container *ngIf="authService.isLoggedIn() else guestButtons"> -->
           <div class="HeaderIcons">
  
 
   <!-- Search Icon -->
-  <a routerLink="/search" class="nav-icon me-3">
+     <input *ngIf="showSearchInput" class="search-input" placeholder="Search..." (input)="onSearch($event)" />
+  <span class="nav-icon me-3" (click)="toggleSearchInput()">
 <i class="bi bi-search"></i>
-  </a>
+  </span>
  <!-- Profile Icon -->
   <a routerLink="/edit-profile" class="nav-icon me-3">
 <i class="bi bi-person"></i>
@@ -57,7 +58,7 @@
     <i class="bi me-1"></i> Logout
   </button>
   </div>
-</ng-container>
+<!-- </ng-container> -->
 
 <ng-template #guestButtons>
   <!-- Sign in / Sign up -->

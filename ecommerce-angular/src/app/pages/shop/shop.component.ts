@@ -8,7 +8,8 @@ import { InstagramSectionComponent } from "../../shared/components/instagram-sec
 import { FooterComponent } from "../../layout/footer/footer.component";
 import { FindFashionSectionComponent } from '../../shared/components/find-fashion-section/find-fashion-section.component';
 import {MatRadioModule} from '@angular/material/radio';
-
+import { SearchService } from '../../shared/services/search.service'; // adjust path
+import { computed, effect } from '@angular/core';
 @Component({
   selector: 'app-shop',
   imports: [HeaderComponent, CommonModule, ProductCardComponent, InstagramSectionComponent, FooterComponent, FindFashionSectionComponent,MatRadioModule],
@@ -16,7 +17,14 @@ import {MatRadioModule} from '@angular/material/radio';
   styleUrl: './shop.component.scss'
 })
 export class ShopComponent {
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService,private searchService: SearchService) {
+//In Angular signals, effect() is used to automatically run some code whenever a signal changes.
+    //only need effect() when you want to react to signal changes, like rerunning a function or updating data.
+    //The ShopComponent is automatically notified through the effect() and reapplies the filters
+    effect(() => {
+    this.applyFilters();
+  });
+}
 
 categories = ['men\'s clothing', 'women\'s clothing', 'electronics', 'jewelery'];
 priceRanges = [
@@ -33,11 +41,13 @@ allProducts: Product[] = [];
 filteredProducts: Product[] = [];
 
 ngOnInit(): void {
-  this.productService.getProducts().subscribe(data => {
-    this.allProducts = data;
-    this.applyFilters();
-  });
-}
+    this.productService.getProducts().subscribe(data => {
+      this.allProducts = data;
+      this.applyFilters();
+    });
+    
+   
+  }
 applyFilters(): void {
   let filtered = this.allProducts;
 
@@ -49,7 +59,13 @@ applyFilters(): void {
     const { min, max } = this.selectedPriceRange;
     filtered = filtered.filter(product => product.price >= min && product.price <= max);
   }
-
+const search = this.searchService.getSearchTerm()().trim();
+    if (search) {
+      filtered = filtered.filter(product => //product is the current product in the filtered array,define the condition: keep the product if its title or description includes the search string.
+        product.title.toLowerCase().includes(search) ||
+        product.description.toLowerCase().includes(search)
+      );
+    }
   const startIndex = (this.currentPage - 1) * this.productsPerPage;
   const endIndex = startIndex + this.productsPerPage;
   this.filteredProducts = filtered.slice(startIndex, endIndex).map(product=>({
