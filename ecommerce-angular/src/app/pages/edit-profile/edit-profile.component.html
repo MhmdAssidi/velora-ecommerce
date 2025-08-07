@@ -26,14 +26,18 @@
         <div><img src="images/profile.png" alt=""></div>
     </div>
     <div class="formContainer">
-    <form [formGroup]="editProfileForm" (submit)="onSubmit()">
+    <form [formGroup]="editProfileForm" (submit)="onSubmit()" class="form">
         <div class="inputFirstLastName">
   <mat-form-field appearance="outline" class="wide-field" floatLabel="always">
     <mat-label>First Name</mat-label>
     <input matInput formControlName="firstName" />
-      <mat-error *ngIf="editProfileForm.get('firstName')?.hasError('required')" class="alert">
-    Please enter your first name
-  </mat-error>
+      <mat-error *ngIf="editProfileForm.get('firstName')?.hasError('required') && editProfileForm.get('firstName')?.touched">
+  Please enter your first name
+</mat-error>
+<mat-error *ngIf="editProfileForm.get('firstName')?.hasError('pattern') && editProfileForm.get('firstName')?.touched">
+  First name must contain only letters
+</mat-error>
+
   </mat-form-field>
  <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Last Name</mat-label>
@@ -41,6 +45,9 @@
       <mat-error *ngIf="editProfileForm.get('lastName')?.hasError('required')" class="alert">
     Please enter your last name
   </mat-error>
+  <mat-error *ngIf="editProfileForm.get('lastName')?.hasError('pattern') && editProfileForm.get('lastName')?.touched">
+  Last name must contain only letters
+</mat-error>
   </mat-form-field>
 </div>
 
@@ -48,27 +55,36 @@
           <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Email</mat-label>
     <input matInput formControlName="email" />
-    <mat-error *ngIf="editProfileForm.get('email')?.hasError('email')" class="alert">
-    Please enter a valid email
-  </mat-error>
+    <mat-error *ngIf="editProfileForm.get('email')?.hasError('required') && editProfileForm.get('email')?.touched">
+  Please enter your email
+</mat-error>
+<mat-error *ngIf="editProfileForm.get('email')?.hasError('email') && editProfileForm.get('email')?.touched">
+  Please enter a valid email address
+</mat-error>
+
   </mat-form-field>
      </div>
      <div class="address">
           <mat-form-field appearance="outline" class="wide-field">
     <mat-label>address</mat-label>
     <input matInput formControlName="address" />
-    <mat-error *ngIf="editProfileForm.get('address')?.hasError('address')" class="alert">
-    Please enter address
-  </mat-error>
+    <mat-error *ngIf="editProfileForm.get('address')?.hasError('required') && editProfileForm.get('address')?.touched">
+  Please enter address
+</mat-error>
+
   </mat-form-field>
      </div>
      <div class="contactNumber">
          <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Contact number</mat-label>
     <input matInput formControlName="contactNumber" />
-    <mat-error *ngIf="editProfileForm.get('contactNumber')?.hasError('contactNumber')" class="alert">
-    Please enter contact number
-  </mat-error>
+   <mat-error *ngIf="editProfileForm.get('contactNumber')?.hasError('required') && editProfileForm.get('contactNumber')?.touched">
+  Please enter contact number
+</mat-error>
+<mat-error *ngIf="editProfileForm.get('contactNumber')?.hasError('pattern') && editProfileForm.get('contactNumber')?.touched">
+  Contact number must be digits only (8-15 digits)
+</mat-error>
+
   </mat-form-field>
      </div>
 
@@ -76,9 +92,13 @@
         <mat-form-field appearance="outline" class="wide-field">
     <mat-label>City</mat-label>
     <input matInput formControlName="city" />
-    <mat-error *ngIf="editProfileForm.get('city')?.hasError('city')" class="alert">
-    Please enter city
-  </mat-error>
+   <mat-error *ngIf="editProfileForm.get('city')?.hasError('required') && editProfileForm.get('city')?.touched">
+  Please enter city
+</mat-error>
+<mat-error *ngIf="editProfileForm.get('city')?.hasError('pattern') && editProfileForm.get('city')?.touched">
+  City must contain only letters
+</mat-error>
+
   </mat-form-field>
      </div>
 
@@ -86,9 +106,13 @@
         <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Password</mat-label>
     <input matInput formControlName="password" />
-    <mat-error *ngIf="editProfileForm.get('password')?.hasError('password')" class="alert">
-    Please enter password
-  </mat-error>
+   <mat-error *ngIf="editProfileForm.get('password')?.hasError('required') && editProfileForm.get('password')?.touched">
+  Please enter password
+</mat-error>
+<mat-error *ngIf="editProfileForm.get('password')?.hasError('minlength') && editProfileForm.get('password')?.touched">
+  Password must be at least 8 characters
+</mat-error>
+
   </mat-form-field>
      </div>
 
