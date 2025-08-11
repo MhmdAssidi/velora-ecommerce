@@ -24,6 +24,7 @@ setToken(token: string): void {  //saves the token returned by the backend into 
   }
   clearToken(): void { //delete the token so used in logout action
     localStorage.removeItem(this.tokenKey);
+    localStorage.clear();
   }
 
   login(credentials: { Username: string, password: string }): Observable<any> { 
@@ -41,6 +42,8 @@ setToken(token: string): void {  //saves the token returned by the backend into 
           role: response.Login.RoleName,
         };
           localStorage.setItem('user', JSON.stringify(userData));
+            localStorage.setItem('token',this.tokenKey);
+
         }
       })
     );
