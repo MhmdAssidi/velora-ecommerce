@@ -6,6 +6,7 @@ import { AuthenticationService } from '../../core/auth/authentication.service';
 import { CommonModule } from '@angular/common'; 
 import { CartService } from '../../shared/services/cart.service';
 import { SearchService } from '../../shared/services/search.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-header',
   imports: [ButtonComponent, RouterModule, CommonModule],
@@ -16,12 +17,16 @@ export class HeaderComponent implements OnInit {
   constructor(public authService: AuthenticationService,private router: Router,private cartService:CartService, private SearchService:SearchService) {}
   
   cartCount=0;
+    private sub?: Subscription; // holds the live subscription
   ngOnInit(): void {
-      this.cartService.cartCount$.subscribe(count=>{
+      this.sub =this.cartService.cartCount$.subscribe(count=>{
         this.cartCount=count;
       })
   }
+ngOnDestroy(): void {
+    this.sub?.unsubscribe(); // // unsubscribe(): stop the infinite cartCount$ stream when header is destroyed to avoid memory leaks.
 
+  }
   logout() {
     this.authService.logout();
     this.router.navigate(['']);

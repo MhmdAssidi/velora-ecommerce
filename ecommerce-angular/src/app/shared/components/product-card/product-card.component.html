@@ -1,19 +1,17 @@
 <a [routerLink]="['/product', productId]" style="cursor: pointer;">
-<mat-card class="deal-card">
-  <div class="img-container">
-  <img mat-card-image [src]="image" [alt]="title" />
-  </div>
-  <mat-card-content>
-    <h2>{{ title }}</h2>
-    <p>{{ desc }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <p class="price">${{ price }}</p>
+  <mat-card class="deal-card">
+    <div class="img-container">
+      <img mat-card-image [src]="image" [alt]="title | titlecase" />
+    </div>
 
-    <!-- <app-button
-    label="Add to Cart"
-  appearance="primary"
-    ></app-button> -->
-  </mat-card-actions>
-</mat-card>
+    <mat-card-content>
+      <h2>{{ title | titlecase | slice:0:20 }}</h2>
+      <p>{{ desc | slice:0:30 }}…</p> <!-- cut first 30 chars -->
+    </mat-card-content>
+
+    <mat-card-actions>
+      <p class="price">{{ price | currency:'USD':'code' }}    <!-- USD 1,999.50 --></p>
+      <!-- change 'USD' to your currency code if you want -->
+    </mat-card-actions>
+  </mat-card>
 </a>
