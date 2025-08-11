@@ -48,6 +48,8 @@ ngOnInit(): void {
     
    
   }
+trackByProduct = (_: number, p: Product) => p.id; // return a stable key (product.id) so *ngFor reuses DOM elements on filter/sort/pagination instead of recreating them.
+
 applyFilters(): void {
   let filtered = this.allProducts;
 
