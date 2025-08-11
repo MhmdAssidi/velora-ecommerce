@@ -10,7 +10,7 @@ export class adminGuard implements CanActivate{
   constructor(private authService:AuthenticationService,private router:Router){}
   canActivate():boolean {
       const user=this.authService.getLoggedInUser();
-      if(user==='mhmd.ad99@gmail.com'){
+      if(user==='mhmd.admin99@gmail.com'){
         return true;
       }
       else{

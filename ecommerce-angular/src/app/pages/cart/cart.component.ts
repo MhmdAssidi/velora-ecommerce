@@ -5,7 +5,8 @@ import { HeaderComponent } from "../../layout/header/header.component";
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ButtonComponent } from "../../shared/components/button/button.component";
 import { RouterModule } from '@angular/router';
-import { CartItem, CartService } from '../../shared/services/cart.service';
+import {CartService } from '../../shared/services/cart.service';
+import { CartItem } from '../../shared/services/shared/models/cart-item.model';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-cart',

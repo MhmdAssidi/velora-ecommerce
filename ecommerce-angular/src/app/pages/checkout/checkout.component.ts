@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../../core/auth/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CartItem, CartService } from '../../shared/services/cart.service';
+import { CartItem } from '../../shared/services/shared/models/cart-item.model';
+import { CartService } from '../../shared/services/cart.service';
 @Component({
   selector: 'app-checkout',
   imports: [HeaderComponent, ButtonComponent, MatInputModule, ReactiveFormsModule, FooterComponent,CommonModule],
