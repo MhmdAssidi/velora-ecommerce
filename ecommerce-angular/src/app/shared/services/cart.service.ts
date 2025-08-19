@@ -19,6 +19,7 @@ cartItems$=this.cartItemSubject.asObservable(); //for showing all cart items
 cartCount$=this.cartCountSubject.asObservable(); //for showing number on cart icon
 
 addToCart(product:Product,quantity:number,color:string,size:string):void{
+  if (quantity <= 0) return;
   const existingItem=this.items.find(item=>item.product.id===product.id && item.color===color && item.size===size); //find the product that will click on it if its in the items array
   if(existingItem){ //if the product exist add the quantity
     existingItem.quantity+=quantity;
