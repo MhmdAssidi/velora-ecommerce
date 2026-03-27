@@ -7,9 +7,17 @@ import { CartItem } from './shared/models/cart-item.model';
   providedIn: 'root'
 })
 export class CartService {
-private items:CartItem[]=[];
+private items:CartItem[]=this.loadCart();
   constructor() { }
 
+  //load the cart from session storage when the service is created, and save it back whenever it changes. This way, the cart persists across page reloads but is cleared when the browser session ends.
+private loadCart(): CartItem[] {
+  const data = sessionStorage.getItem('cart');
+  return data ? JSON.parse(data) : [];
+}
+private saveCart(): void {
+  sessionStorage.setItem('cart', JSON.stringify(this.items));
+}
   //BehaviorSubject to keep track of data
 private cartItemSubject=new BehaviorSubject<CartItem[]>([]);
 private cartCountSubject=new BehaviorSubject<number>(0);
@@ -39,6 +47,7 @@ getItems():CartItem[]{
 }
 
 private updateCart():void{
+  this.saveCart();//save in session storage
   this.cartItemSubject.next([...this.items]); ////keep track of changes in products in all components
   const totalCount=this.items.reduce((sum,item)=>sum+item.quantity,0);
   this.cartCountSubject.next(totalCount); //keep track of changes in count in all components
