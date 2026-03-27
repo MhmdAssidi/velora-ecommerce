@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import type { ColDef, ICellRendererParams } from 'ag-grid-community'; 
-import { AuthenticationService } from '../../core/auth/authentication.service';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Chart, ChartModule } from 'angular-highcharts';
 imports: [AgGridAngular, CommonModule, ChartModule]
@@ -136,7 +134,7 @@ barGraph = new Chart({
     enabled:false
   }
 });
-  constructor(private authService:AuthenticationService,private router:Router){}
+  constructor(){}
   stats=[
 {icon:'<i class="bi bi-currency-dollar custom-color"></i>',price:'$12,480',title:'total Balance',prcntg:'0.43%'},
 {icon:'<i class="bi bi-cart2"></i>',price:'$2,572',title:'total Sales',prcntg:'4.35%'},
@@ -207,10 +205,6 @@ barGraph = new Chart({
     }
   }
 
-logout() {
-    this.authService.logout();
-    this.router.navigate(['']);
-  }
-
+  logout() {}
 
 }

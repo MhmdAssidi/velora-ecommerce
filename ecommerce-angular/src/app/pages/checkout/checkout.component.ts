@@ -4,8 +4,6 @@ import { FooterComponent } from "../../layout/footer/footer.component";
 import { ButtonComponent } from "../../shared/components/button/button.component";
 import { MatInputModule } from "@angular/material/input";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../../core/auth/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CartItem } from '../../shared/services/shared/models/cart-item.model';
@@ -18,7 +16,7 @@ import { CartService } from '../../shared/services/cart.service';
 })
 export class CheckoutComponent {
   checkoutForm!: FormGroup;
-  constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService,private cartService:CartService) {}
+  constructor(private fb: FormBuilder,private cartService:CartService) {}
 cartItems: CartItem[] = [];
 
 ngOnInit(): void {
