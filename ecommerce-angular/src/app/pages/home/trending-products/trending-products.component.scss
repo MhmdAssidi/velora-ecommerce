@@ -2,45 +2,51 @@
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+
     h2{
         font-size: 48px;
         color: #484848;
-        margin: 30px;
+        margin: 20px 0 30px;
     }
 }
+
 .productCardContainer{
     display: flex;
     width: 100%;
-    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+    gap: 24px;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
-
 }
+
 app-product-card{
-    flex: 1 1 calc(25% - 20px);
-    max-width: calc(25% - 20px);
-  box-sizing: border-box;
+    flex: 0 0 calc((100% - 48px) / 3);
+    max-width: calc((100% - 48px) / 3);
+    box-sizing: border-box;
+    display: flex;
 }
 
 @media (max-width: 1200px) {
-app-product-card{
-    flex: 1 1 calc(50% - 20px);
-    max-width: calc(60% - 20px);
-  box-sizing: border-box;
+    .productCardContainer{
+        max-width: 920px;
+    }
+
 }
-}
+
 @media (max-width: 850px) {
-app-product-card{
-    flex: 1 1 calc(70% - 20px);
-    max-width: calc(80% - 20px);
-  box-sizing: border-box;
-}
-.trendingProductsContainer{
-h2{
-    font-size: 30px;
-}
-}
+    .productCardContainer{
+        max-width: 420px;
+    }
+
+    app-product-card{
+        max-width: 360px;
+    }
+
+    .trendingProductsContainer h2{
+        font-size: 30px;
+    }
 }
