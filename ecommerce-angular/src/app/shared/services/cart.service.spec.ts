@@ -18,7 +18,7 @@ describe('CartService', () => {
   });
   it('increases count when adding to cart', async () => {
   service.addToCart(p1, 1, 'Black', 'M');
-  const count = await firstValueFrom(service.cartCount$);
+  const count = await firstValueFrom(service.cartCount$); //we need to await before run expect
   expect(count).toBe(1);
 });
 
