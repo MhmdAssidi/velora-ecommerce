@@ -57,10 +57,10 @@
   </div>
 </div>
   <!-- PAGINATION -->
-   <div class="paginationContainer">
+  <div class="paginationContainer" *ngIf="totalPages > 1">
   <nav>
     <ul class="pagination">
-      <li *ngFor="let page of [1, 2, 3]" (click)="currentPage = page; applyFilters()">
+      <li *ngFor="let page of getPages()" (click)="currentPage = page; applyFilters()">
         <a class="page-link">{{ page }}</a>
       </li>
     </ul>

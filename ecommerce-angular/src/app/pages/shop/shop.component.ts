@@ -39,6 +39,7 @@ currentPage = 1;
 productsPerPage = 8;
 allProducts: Product[] = [];
 filteredProducts: Product[] = [];
+totalPages = 1;
 
 ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
@@ -49,6 +50,16 @@ ngOnInit(): void {
    
   }
 trackByProduct = (_: number, p: Product) => p.id; // return a stable key (product.id) so *ngFor reuses DOM elements on filter/sort/pagination instead of recreating them.
+
+getPages(): number[] {
+  const pages: number[] = [];
+
+  for (let page = 1; page <= this.totalPages; page++) {
+    pages.push(page);
+  }
+
+  return pages;
+}
 
 applyFilters(): void {
   let filtered = this.allProducts;
@@ -68,6 +79,7 @@ const search = this.searchService.getSearchTerm()().trim();
         product.description.toLowerCase().includes(search)
       );
     }
+  this.totalPages = Math.ceil(filtered.length / this.productsPerPage);
   const startIndex = (this.currentPage - 1) * this.productsPerPage;
   const endIndex = startIndex + this.productsPerPage;
   this.filteredProducts = filtered.slice(startIndex, endIndex).map(product=>({
