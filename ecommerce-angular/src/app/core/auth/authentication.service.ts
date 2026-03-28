@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import {Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,45 +9,35 @@ import {Observable, tap } from 'rxjs';
 export class AuthenticationService {
   private tokenKey='access_token';
 
+  private loggedIn$ = new BehaviorSubject<boolean>(!!localStorage.getItem(this.tokenKey));
+  isLoggedIn$ = this.loggedIn$.asObservable();
+
   constructor(private http: HttpClient) { }
-//we need to store the token returned from backend api
 
-setToken(token: string): void {  //saves the token returned by the backend into localStorage.used in login action
-   console.log('Setting token:', token);  // This should log the token to the console
+  signin(data: { email: string; phone_number: string; password: string }): Observable<any> {
+  return this.http.post<any>('http://localhost:5001/users/signin', data).pipe(
+    tap(response => {
+      console.log('Signin response:', response);
 
-  localStorage.setItem(this.tokenKey, token);
+      if (response.token) { //save the returned token to localStorage
+        localStorage.setItem('access_token', response.token);
+        this.loggedIn$.next(true);
+      }
+
+      if (response.user) {  //save the user data to localStorage
+        localStorage.setItem('user', JSON.stringify(response.user));
+      }
+    })
+  );
 }
-
- 
-  getToken(): string | null {  //Reads the token from localStorage 
-    return localStorage.getItem(this.tokenKey);
-  }
-  clearToken(): void { //delete the token so used in logout action
-    localStorage.removeItem(this.tokenKey);
-    localStorage.clear();
-  }
-
-  login(credentials: { Username: string, password: string }): Observable<any> { 
-
-    //first send pass and email which are the credentails to the backend api using http
-    return this.http.post<any>('http://192.168.7.156:5005/api/User/Login()', credentials).pipe(
-      tap(response => { //tap lets you “do something” after getting a response. response here is what we will get from api 
-        console.log('API Response:', response.Login.AccessToken);  // Log the response
-        if ( response.Login.AccessToken && response.Login.AccessToken) { //if response return a token
-          this.setToken(response.Login.AccessToken); //store it in local storage
-          const userData = {
-          email: credentials.Username, // Use the provided email from credentials
-          firstName: response.Login.Firstname, // Use data returned from API
-          lastName: response.Login.Lastname,
-          role: response.Login.RoleName,
-        };
-          localStorage.setItem('user', JSON.stringify(userData));
-            localStorage.setItem('token',this.tokenKey);
-
-        }
-      })
-    );
-  }
+isLoggedIn(): boolean {
+  return !!localStorage.getItem(this.tokenKey);
+}
+logout(): void {
+  localStorage.removeItem('access_token');
+  localStorage.removeItem('user');
+  this.loggedIn$.next(false);
+}
 signup(data: {
   first_name: string;
   last_name: string;
@@ -58,33 +48,17 @@ signup(data: {
   return this.http.post<any>('http://localhost:5001/users/signup', data).pipe(
     tap(response => {
       console.log('Signup response:', response);
+      if (response.token) { //save the returned token to localStorage
+        localStorage.setItem('access_token', response.token);
+        this.loggedIn$.next(true);
+      }
+
+      if (response.user) {  //save the user data to localStorage
+        localStorage.setItem('user', JSON.stringify(response.user));
+      }
     })
   );
 }
-
-
-isLoggedIn(): boolean {
-  return !!this.getToken();  //Returns true if there’s a token → user is logged in.
-}
-logout(): void {
-    this.clearToken();
-  }
-
-  getLoggedInUser():string | null{
-    const userData=localStorage.getItem('user');
-    if(!userData){
-      console.log("in getLoggedInUser function,no user returned from localstorage");
-    return null;
-    }
-    if(userData){
-      const user=JSON.parse(userData);
-      return user.email;
-    }
-    else{
-      return null;
-    }
-  }
-
 
 
 }

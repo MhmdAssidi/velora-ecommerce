@@ -11,13 +11,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^...",
-    "cors": "^...",
-    "dotenv": "^...",
-    "express": "^...",
-    "mysql2": "^..."
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.14.0"
   },
   "devDependencies": {
-    "nodemon": "^..."
+    "nodemon": "^3.1.9"
   }
 }
