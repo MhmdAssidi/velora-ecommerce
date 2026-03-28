@@ -26,7 +26,7 @@ import { RouterModule } from '@angular/router';
 export class LoginComponent implements OnInit {
  signInForm!: FormGroup;  //signinForm is the form.
 apiErrorMessage = '';
-
+submitAttempted = false;
   constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService) {}
 
 ngOnInit(): void {
@@ -37,28 +37,36 @@ ngOnInit(): void {
   });
 }
 
-onSubmit() {
-  if (this.signInForm.invalid) {
-    this.signInForm.markAllAsTouched();
-    return;
-  }
-
-  const credentials = {
-    Username: this.signInForm.value.email,
-    password: this.signInForm.value.password
-  };
-
-  this.authService.login(credentials).subscribe({
-    next: () => {
-      this.apiErrorMessage = '';
-      this.router.navigate(['/']); // navigate wherever you want after login
-    },
-    error: (error) => {
-      this.apiErrorMessage = 'Invalid username or password';
-
+onSubmit(): void {
+    this.submitAttempted = true;
+    
+    if (this.signInForm.invalid) {
+      this.signInForm.markAllAsTouched();
+      return;
     }
-  });
-}
+
+    const formValue = this.signInForm.value;
+
+    const signInData = {
+      email: formValue.email,
+      phone_number: formValue.phone,
+      password: formValue.password
+    };
+
+    console.log('Data sent to backend:', signInData);
+
+    this.authService.signin(signInData).subscribe({
+      next: (response) => {
+        console.log('Signup success:', response);
+        this.signInForm.reset();
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.error('Signin failed:', error);
+        alert(error.error?.message || 'Signin failed');
+      }
+    });
+  }
 
 
 goToForgotPass(){

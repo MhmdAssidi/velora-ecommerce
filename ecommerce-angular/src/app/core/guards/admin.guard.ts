@@ -8,15 +8,13 @@ import { Injectable } from '@angular/core';
 export class adminGuard implements CanActivate{
 
   constructor(private authService:AuthenticationService,private router:Router){}
-  canActivate():boolean {
-      const user=this.authService.getLoggedInUser();
-      if(user==='mhmd.admin99@gmail.com'){
-        return true;
-      }
-      else{
-        this.router.navigate(['/']);
-        return false;
-      }
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
+    if(this.authService.isLoggedIn()){
+      return true;
+    }else{
+      this.router.navigate(['/login']);
+      return false;
+    } 
   }
 
 }
