@@ -1,86 +1,94 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
-import { ButtonComponent } from "../../../shared/components/button/button.component";
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../core/auth/authentication.service';
-
-export function passwordMatchValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const password = control.get('password');
-    const confirmPassword = control.get('confirmPassword');
-
-    if (password && confirmPassword && password.value !== confirmPassword.value) {
-      return { passwordMismatch: true };
-    }
-    return null;
-  };
-}
+import { ButtonComponent } from '../../../shared/components/button/button.component';
 @Component({
   selector: 'app-signup',
- imports: [
+  standalone: true,
+  imports: [
     CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     ButtonComponent
-],
+  ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
+export class SignupComponent {
+  signupForm: FormGroup;
+  submitAttempted = false;
 
-export class SignupComponent implements OnInit {
-  signupForm!: FormGroup;  //signupForm is the form.
-
-  constructor(private fb: FormBuilder,private router: Router, private authService: AuthenticationService) {}
-
-ngOnInit(): void {
-  this.signupForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    phone: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', Validators.required]
-  },{
-        validators: passwordMatchValidator()
-
-  });
-}
-
-onSubmit() {
-  console.log('in onSubmit');
-  if (this.signupForm.invalid) {
-    this.signupForm.markAllAsTouched();
-    return;
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthenticationService,
+    private router: Router
+  ) {
+    this.signupForm = this.fb.group(
+      {
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        phone: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', Validators.required]
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
- const signupData = {
-  Firstname: this.signupForm.value.firstName,
-  Lastname: this.signupForm.value.lastName,
-  Email: this.signupForm.value.email,
-  Password: this.signupForm.value.password,
-  RoleName: 'User'
-};
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
 
+    if (password !== confirmPassword) {
+      return { passwordMismatch: true };
+    }
 
-  this.authService.signup(signupData).subscribe({
-  next: (response) => {
-    console.log('Signup successful!', response);
+    return null;
+  }
+
+  onSubmit(): void {
+    this.submitAttempted = true;
+    
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched();
+      return;
+    }
+
+    const formValue = this.signupForm.value;
+
+    const signupData = {
+      first_name: formValue.firstName,
+      last_name: formValue.lastName,
+      email: formValue.email,
+      phone_number: formValue.phone,
+      password: formValue.password
+    };
+
+    console.log('Data sent to backend:', signupData);
+
+    this.authService.signup(signupData).subscribe({
+      next: (response) => {
+        console.log('Signup success:', response);
+        alert('Account created successfully');
+        this.signupForm.reset();
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        console.error('Signup failed:', error);
+        alert(error.error?.message || 'Signup failed');
+      }
+    });
+  }
+
+  goToSignin(): void {
     this.router.navigate(['/signin']);
-  },
-  error: (error) => {
-    console.error('Signup error', error);
   }
-});
-}
-
-goToSignin() {
-  this.router.navigate(['/signin']);
-}
-
 }

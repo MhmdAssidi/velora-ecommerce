@@ -12,12 +12,15 @@ import { MatIconModule } from '@angular/material/icon';
 export class ButtonComponent {
 @Input() label!:string;   //there is ! means we will assign to it a value later
   @Input() color: string ='primary';
-  @Input() type: string = 'button';
+  @Input() type: 'button' | 'submit' = 'button';
   @Input() disabled: boolean = false;
   @Input() icon: string | null = null;
   @Input() appearance: string = 'primary';
   @Input() imgIcon: string | null = null;
   @Input() customClass: string | null = null;
-  @Output() onBtnClicked: EventEmitter<any> = new EventEmitter;
+  @Output() onBtnClicked: EventEmitter<MouseEvent> = new EventEmitter<MouseEvent>();
 
+  handleClick(): void {
+    this.onBtnClicked.emit();
+  }
 }

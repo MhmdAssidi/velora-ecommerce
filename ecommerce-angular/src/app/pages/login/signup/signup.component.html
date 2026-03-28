@@ -12,7 +12,7 @@
 </div>
 
 <div class="form">
-<form [formGroup]="signupForm" (submit)="onSubmit()">
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
   <div class="formBtns">
   <app-button
@@ -32,6 +32,10 @@
 
 <div class="formInputs">
 <span class="or">- OR -</span>
+
+<p *ngIf="submitAttempted && signupForm.invalid" class="alert" style="margin-bottom: 12px;">
+  Please complete all required fields correctly.
+</p>
 
   <div class="formInputsEachRow">
   <mat-form-field appearance="outline" class="wide-field" floatLabel="always">
@@ -54,6 +58,9 @@
   <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Email address</mat-label>
     <input matInput formControlName="email" />
+    <mat-error *ngIf="signupForm.get('email')?.hasError('required')" class="alert">
+    Please enter your email address
+  </mat-error>
     <mat-error *ngIf="signupForm.get('email')?.hasError('email')" class="alert">
     Please enter a valid email address
   </mat-error>
@@ -83,6 +90,9 @@
   <mat-form-field appearance="outline" class="wide-field">
     <mat-label>Confirm Password</mat-label>
     <input matInput type="password" formControlName="confirmPassword" />
+    <mat-error *ngIf="signupForm.get('confirmPassword')?.hasError('required')" class="alert">
+    Please confirm your password
+  </mat-error>
     <mat-error *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirmPassword')?.touched" class="alert">
     Passwords do not match
   </mat-error>
@@ -91,14 +101,12 @@
 </div>
 
 <div>
- <app-button
-  label="Create Account"
-  appearance="primary"
-  type="button"
-  (onBtnClicked)="onSubmit()"
-  customClass="signup-button">
-</app-button>
-</div>
+<app-button
+    label="Create Account"
+    appearance="primary"
+    type="submit"
+    customClass="signup-button">
+  </app-button></div>
 
 </form>
 <div style="margin-top: 10px;">
