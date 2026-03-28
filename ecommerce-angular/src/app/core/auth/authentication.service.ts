@@ -49,18 +49,15 @@ setToken(token: string): void {  //saves the token returned by the backend into 
     );
   }
 signup(data: {
-  Firstname: string;
-  Lastname: string;
-  Email: string;
-  Password: string;
-  RoleName: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone_number: string;
+  password: string;
 }): Observable<any> {
-  return this.http.post<any>('http://192.168.7.156:5005/api/User/SignUp()', data).pipe(
+  return this.http.post<any>('http://localhost:5001/users/signup', data).pipe(
     tap(response => {
-      console.log('API Response:', response);  // Log the response
-      if (response && response.token) {
-        this.setToken(response.token);
-      }
+      console.log('Signup response:', response);
     })
   );
 }

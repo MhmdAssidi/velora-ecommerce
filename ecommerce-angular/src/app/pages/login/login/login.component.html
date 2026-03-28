@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="imgContainer">
+    <img src="images/allan-lainez-n7hd4Lo3Lt8-unsplash.jpg" alt="Sign In Banner" />
+  </div>
+
+  <div class="formContainer">
+    <div>
+      <h1>Velora</h1>
+      <h2>Sign In</h2>
+    </div>
+
+    <div class="form">
+      <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+        <div class="formBtns">
+          <app-button
+            label="Sign In with Google"
+            appearance="secondary"
+            imgIcon="images/image 939.png">
+          </app-button>
+
+          <app-button
+            label="Sign In with Email"
+            appearance="secondary"
+            imgIcon="images/image 940.png">
+          </app-button>
+        </div>
+
+        <div class="formInputs">
+          <span class="or">- OR -</span>
+
+          <div class="formInputsEachRow">
+            <mat-form-field appearance="outline" class="wide-field">
+              <mat-label>Email address</mat-label>
+              <input matInput formControlName="email" />
+              <mat-error *ngIf="signInForm.get('email')?.hasError('required')" class="alert">
+                Please enter your email address
+              </mat-error>
+              <mat-error *ngIf="signInForm.get('email')?.hasError('email')" class="alert">
+                Please enter a valid email address
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="formInputsEachRow">
+            <mat-form-field appearance="outline" class="wide-field">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="password" />
+              <mat-error *ngIf="signInForm.get('password')?.hasError('required')" class="alert">
+                Password is required
+              </mat-error>
+              <mat-error *ngIf="signInForm.get('password')?.hasError('minlength')" class="alert">
+                Password must be at least 8 characters
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <p *ngIf="apiErrorMessage" class="alert">{{ apiErrorMessage }}</p>
+        </div>
+
+        <div class="forgot">
+          <a (click)="goToForgotPass()" style="cursor: pointer;">Forgot password?</a>
+        </div>
+
+        <div class="submitBtnCont">
+          <div class="submitBtn">
+            <app-button
+              label="Sign In"
+              appearance="primary"
+              type="submit"
+              customClass="signin-button">
+            </app-button>
+          </div>
+
+          <a routerLink="/signup" style="width: 100%; text-decoration: none;">
+            <app-button
+              label="Register Now"
+              appearance="secondary"
+              type="button"
+              customClass="register-now-button">
+            </app-button>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
